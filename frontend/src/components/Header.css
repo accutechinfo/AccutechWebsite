@@ -1,0 +1,563 @@
+
+/* ==========================================
+   ACCUTECH ERP HEADER
+========================================== */
+
+.accu-header {
+  --accu-announcement-height: 52px;
+
+  position: sticky;
+  top: calc(-1 * var(--accu-announcement-height));
+  z-index: 1100;
+
+  width: 100%;
+  background: #ffffff;
+  font-family: inherit;
+}
+
+/* ==========================================
+   ANNOUNCEMENT
+========================================== */
+
+.accu-header .accu-top-announcement {
+  width: 100%;
+  height: var(--accu-announcement-height);
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  background: linear-gradient(
+    100deg,
+    #3152d1 0%,
+    #885294 30%,
+    #d64b4c 67%,
+    #5375dc 100%
+  );
+}
+
+.accu-header .accu-announcement-marquee {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.accu-header .accu-announcement-track {
+  width: max-content;
+  min-width: max-content;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  animation: accuMarqueeMove 36s linear infinite;
+  will-change: transform;
+}
+
+.accu-header .accu-announcement-group {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: max-content;
+  height: 100%;
+}
+
+.accu-header .accu-announcement-message {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+
+  height: 100%;
+  padding: 0 90px;
+  margin: 0;
+
+  white-space: nowrap !important;
+  width: max-content;
+
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1;
+
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.accu-header .accu-announcement-message:hover {
+  text-decoration: underline !important;
+}
+
+.accu-header .accu-top-announcement:hover
+.accu-announcement-track {
+  animation-play-state: paused;
+}
+
+@keyframes accuMarqueeMove {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.accu-header .accu-navbar {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.accu-header .accu-navbar-container {
+  width: min(1200px, calc(100% - 40px));
+  min-height: 82px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) 160px;
+  align-items: center;
+}
+
+/* LOGO */
+
+.accu-header .accu-logo-link {
+  grid-column: 1;
+  justify-self: start;
+
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.accu-header .accu-logo-image {
+  display: block;
+  width: 155px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* CENTERED MENUS */
+
+.accu-header .accu-menu-wrapper {
+  grid-column: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.accu-header .accu-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+
+  gap: clamp(12px, 1.2vw, 22px);
+
+  margin: 0;
+  padding: 0;
+}
+
+.accu-header .accu-menu-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 12px 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+  color: #69717d;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.accu-header .accu-menu-link:hover,
+.accu-header .accu-menu-link.active {
+  color: #2451df;
+}
+
+.accu-header .accu-navbar-balance {
+  grid-column: 3;
+  width: 100%;
+  height: 1px;
+}
+
+/* MOBILE MENU BUTTON */
+
+.accu-header .accu-mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: 0;
+  color: #172447;
+  cursor: pointer;
+}
+
+/* ==========================================
+   SERVICES DROPDOWN
+========================================== */
+
+.accu-header .accu-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.accu-header .accu-dropdown-btn {
+  appearance: none;
+}
+
+.accu-header .accu-dropdown-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.accu-header .accu-dropdown.open
+.accu-dropdown-btn svg {
+  transform: rotate(180deg);
+}
+
+.accu-header .accu-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  width: 285px;
+  padding: 9px;
+
+  background: #ffffff;
+  border: 1px solid #e5eaf4;
+  border-radius: 12px;
+
+  box-shadow: 0 18px 45px rgba(17, 35, 74, 0.14);
+  z-index: 1110;
+}
+
+.accu-header .accu-dropdown-item-wrapper {
+  position: relative;
+}
+
+.accu-header .accu-dropdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 7px;
+}
+
+.accu-header .accu-dropdown-row:hover {
+  background: #f2f6ff;
+}
+
+.accu-header .accu-dropdown-link {
+  display: block;
+  flex: 1;
+  min-width: 0;
+
+  padding: 11px 10px;
+
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.accu-header .accu-dropdown-link:hover {
+  color: #2451df;
+}
+
+/* PLACEHOLDER LINKS — DO NOT NAVIGATE */
+
+.accu-header .accu-service-placeholder {
+  cursor: default;
+  color: #64748b;
+}
+
+.accu-header .accu-service-placeholder:hover {
+  color: #64748b;
+}
+
+/* SUBMENU ARROW */
+
+.accu-header .accu-dropdown-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 35px;
+
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  color: #64748b;
+  cursor: pointer;
+}
+
+.accu-header .accu-dropdown-arrow:hover {
+  color: #2451df;
+}
+
+/* NESTED SUBMENU */
+
+.accu-header .accu-submenu {
+  position: absolute;
+  left: calc(100% + 7px);
+  top: -9px;
+
+  width: 255px;
+  max-height: 75vh;
+  overflow-y: auto;
+
+  padding: 9px;
+
+  background: #ffffff;
+  border: 1px solid #e5eaf4;
+  border-radius: 12px;
+
+  box-shadow: 0 18px 45px rgba(17, 35, 74, 0.14);
+  z-index: 1120;
+}
+
+.accu-header .accu-submenu a {
+  display: block;
+  padding: 10px;
+
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.5;
+  text-decoration: none;
+
+  border-radius: 7px;
+}
+
+.accu-header .accu-submenu a:hover {
+  background: #f2f6ff;
+  color: #2451df;
+}
+
+.accu-header .accu-submenu-divider {
+  height: 1px;
+  margin: 8px 0;
+  background: #e5eaf4;
+}
+
+.accu-header .accu-show-all {
+  color: #2451df !important;
+  font-weight: 750 !important;
+}
+
+/* ==========================================
+   MEDIUM DESKTOP
+========================================== */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .accu-header .accu-navbar-container {
+    grid-template-columns: 140px minmax(0, 1fr) 140px;
+  }
+
+  .accu-header .accu-logo-image {
+    width: 135px;
+  }
+
+  .accu-header .accu-menu {
+    gap: 10px;
+  }
+
+  .accu-header .accu-menu-link {
+    font-size: 12px;
+  }
+}
+
+/* ==========================================
+   TABLET AND MOBILE
+========================================== */
+
+@media (max-width: 991px) {
+  .accu-header {
+    --accu-announcement-height: 45px;
+  }
+
+  .accu-header .accu-announcement-message {
+    font-size: 12px;
+    padding: 0 55px;
+  }
+
+  .accu-header .accu-navbar-container {
+    width: calc(100% - 32px);
+    min-height: 72px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .accu-header .accu-logo-image {
+    width: 145px;
+  }
+
+  .accu-header .accu-mobile-menu-btn {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .accu-header .accu-navbar-balance {
+    display: none;
+  }
+
+  /* COLLAPSIBLE MOBILE NAV */
+
+  .accu-header .accu-menu-wrapper {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+
+    padding: 12px 20px 20px;
+
+    background: #ffffff;
+    box-shadow: 0 15px 32px rgba(0, 0, 0, 0.12);
+
+    z-index: 1110;
+  }
+
+  .accu-header .accu-menu-wrapper.show {
+    display: block;
+  }
+
+  .accu-header .accu-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    gap: 0;
+    width: 100%;
+  }
+
+  .accu-header .accu-menu-link {
+    width: 100%;
+    justify-content: flex-start;
+
+    padding: 13px 8px;
+    font-size: 15px;
+
+    border-bottom: 1px solid #f0f2f6;
+  }
+
+  .accu-header .accu-dropdown {
+    display: block;
+    width: 100%;
+  }
+
+  .accu-header .accu-dropdown-btn {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .accu-header .accu-dropdown-menu {
+    position: static;
+
+    width: 100%;
+    margin: 5px 0 12px;
+    padding: 5px 8px;
+
+    border: 1px solid #e9eef6;
+    border-radius: 9px;
+
+    box-shadow: none;
+    background: #fafcff;
+  }
+
+  .accu-header .accu-dropdown-link {
+    font-size: 14px;
+    padding: 12px 10px;
+  }
+
+  .accu-header .accu-submenu {
+    position: static;
+
+    width: 100%;
+    max-height: none;
+
+    margin: 0 0 8px;
+    padding: 4px 0 4px 12px;
+
+    border: 0;
+    border-left: 2px solid #dce6ff;
+    border-radius: 0;
+
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .accu-header .accu-submenu a {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+  .accu-header .accu-navbar-container {
+    width: calc(100% - 28px);
+    min-height: 68px;
+  }
+
+  .accu-header .accu-logo-image {
+    width: 130px;
+  }
+
+  .accu-header .accu-announcement-message {
+    font-size: 11px;
+    padding: 0 42px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .accu-header .accu-announcement-track {
+    animation: none;
+  }
+
+  .accu-header .accu-menu-link,
+  .accu-header .accu-dropdown-btn svg {
+    transition: none;
+  }
+}

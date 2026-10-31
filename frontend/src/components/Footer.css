@@ -1,0 +1,352 @@
+
+/* =========================================
+   ACCUTECH ERP FOOTER
+========================================= */
+
+.accu-site-footer {
+  background: #ffffff;
+  color: #5b6475;
+  font-family: inherit;
+  border-top: 1px solid #eef0f4;
+  position: relative;
+}
+
+.accu-footer-container {
+  width: min(1320px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* FOUR COLUMN LAYOUT */
+
+.accu-footer-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 1fr 1.35fr;
+  column-gap: 45px;
+  padding: 52px 0 45px;
+  align-items: start;
+}
+
+.accu-footer-column {
+  min-width: 0;
+}
+
+.accu-footer-column h3 {
+  font-size: 17px;
+  font-weight: 750;
+  color: #00b894;
+  margin: 0 0 25px;
+  line-height: 1.4;
+}
+
+/* LINKS */
+
+.accu-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 17px;
+}
+
+.accu-footer-links a,
+.accu-footer-contact-item a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.65;
+  transition: color 0.2s ease;
+}
+
+.accu-footer-links a:hover,
+.accu-footer-contact-item a:hover {
+  color: #00b894;
+}
+
+/* GUIDES */
+
+.accu-footer-guides {
+  margin-top: 35px;
+}
+
+.accu-footer-guides-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 17px;
+}
+
+.accu-footer-guides-title span {
+  height: 1px;
+  background: #d9efea;
+  flex: 1;
+}
+
+.accu-footer-guides-title h4 {
+  color: #00b894;
+  font-size: 19px;
+  font-weight: 750;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.accu-footer-guide-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 17px 0;
+  border-bottom: 1px solid #e8edf2;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.accu-footer-guide-link:last-child {
+  border-bottom: none;
+}
+
+.accu-footer-guide-link i {
+  color: #00b894;
+  font-size: 15px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.accu-footer-guide-link:hover {
+  color: #00b894;
+}
+
+/* CONTACT DETAILS */
+
+.accu-footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accu-footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.accu-footer-contact-item > i {
+  width: 18px;
+  flex: 0 0 18px;
+  color: #50545a;
+  font-size: 16px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.accu-footer-contact-item strong {
+  color: #475467;
+}
+
+.accu-footer-arattai-icon {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+  flex: 0 0 19px;
+  margin-top: 4px;
+}
+
+/* SOCIAL ICONS */
+
+.accu-footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.accu-footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 5px;
+  background: #00bfa5;
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.accu-footer-socials a i {
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.accu-footer-socials a:hover {
+  background: #009b85;
+  transform: translateY(-3px);
+}
+
+/* COPYRIGHT */
+
+.accu-footer-bottom {
+  border-top: 1px solid #e8edf2;
+  min-height: 100px;
+  padding: 23px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.accu-footer-bottom-logo img {
+  width: 145px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.accu-footer-bottom p {
+  color: #58647e;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.accu-footer-bottom p a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.accu-footer-bottom p a:hover {
+  color: #00b894;
+}
+
+/* FLOATING CONTACT BUTTONS */
+
+.accu-floating-contacts {
+  position: fixed;
+  right: 22px;
+  bottom: 60px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accu-floating-btn {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.accu-floating-btn:hover {
+  transform: translateY(-4px);
+}
+
+.accu-floating-arattai {
+  background: #ffd51a;
+  border: 5px solid #fff1a8;
+}
+
+.accu-floating-arattai img {
+  width: 39px;
+  height: 39px;
+  object-fit: contain;
+}
+
+.accu-floating-whatsapp {
+  background: #25d366;
+  border: 5px solid #e9fff0;
+}
+
+.accu-floating-whatsapp i {
+  font-size: 33px;
+  color: white;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .accu-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 45px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .accu-footer-container {
+    width: calc(100% - 32px);
+  }
+
+  .accu-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 38px 0;
+  }
+
+  .accu-footer-column h3 {
+    margin-bottom: 16px;
+  }
+
+  .accu-footer-links {
+    gap: 12px;
+  }
+
+  .accu-footer-guides {
+    margin-top: 25px;
+  }
+
+  .accu-footer-socials {
+    gap: 8px;
+  }
+
+  .accu-footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .accu-footer-bottom-logo img {
+    width: 125px;
+  }
+
+  .accu-floating-contacts {
+    right: 12px;
+    bottom: 80px;
+    gap: 12px;
+  }
+
+  .accu-floating-btn {
+    width: 53px;
+    height: 53px;
+  }
+
+  .accu-floating-arattai img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .accu-floating-whatsapp i {
+    font-size: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accu-footer-socials a,
+  .accu-floating-btn {
+    transition: none;
+  }
+}

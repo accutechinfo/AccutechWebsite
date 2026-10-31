@@ -1,0 +1,163 @@
+
+.erp-form-card {
+  width: 100%;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 35px;
+  background: #fff;
+  border: 1px solid #e8edf5;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(20, 40, 80, .08);
+}
+
+.erp-form-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.erp-form-heading span {
+  color: #2451df;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.erp-form-heading h2 {
+  margin: 10px 0;
+  font-size: clamp(25px, 3vw, 32px);
+  line-height: 1.3;
+  color: #182442;
+}
+
+.erp-form-heading p {
+  color: #69778c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.erp-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.erp-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.erp-form-field.full {
+  grid-column: 1 / -1;
+}
+
+.erp-form-field label {
+  font-size: 14px;
+  color: #26324d;
+  font-weight: 650;
+}
+
+.erp-form-field label b {
+  color: #e11d48;
+}
+
+.erp-form-field input,
+.erp-form-field select,
+.erp-form-field textarea {
+  width: 100%;
+  min-height: 47px;
+  padding: 12px 14px;
+  border: 1px solid #d9e0eb;
+  border-radius: 9px;
+  background: #fff;
+  color: #202b42;
+  font: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.erp-form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.erp-form-field input:focus,
+.erp-form-field select:focus,
+.erp-form-field textarea:focus {
+  outline: none;
+  border-color: #2451df;
+  box-shadow: 0 0 0 3px rgba(36, 81, 223, .10);
+}
+
+.erp-form-field small {
+  color: #d22635;
+  font-size: 12px;
+}
+
+.erp-form-submit {
+  width: 100%;
+  margin-top: 25px;
+  background: #2451df;
+  color: #fff;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 9px;
+  font-weight: 750;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.erp-form-submit:hover:not(:disabled) {
+  background: #193dba;
+}
+
+.erp-form-submit:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.erp-form-notice {
+  margin: 18px 0 0;
+  color: #2451df;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.erp-whatsapp-button {
+  display: block;
+  margin-top: 14px;
+  padding: 14px;
+  background: #168844;
+  color: #fff;
+  text-align: center;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.erp-whatsapp-button:hover {
+  background: #0d7136;
+}
+
+.erp-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .erp-form-card {
+    padding: 24px 18px;
+    margin: 20px auto;
+  }
+
+  .erp-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,52 @@
+/* Single, responsive enquiry component in 3 visual variants */
+.demo-common { box-sizing:border-box; }
+.demo-common * { box-sizing:border-box; }
+.demo-common-form { display:flex; flex-direction:column; }
+.demo-common-field { display:block; width:100%; margin-bottom:10px; }
+.demo-common-field input,.demo-common-field textarea { display:block; width:100%; font:inherit; font-size:14px;
+ border:1px solid #d0d9e8; border-radius:9px; background:#fff; color:#10234f; outline:none; padding:10px 13px; }
+.demo-common-field input { min-height:44px; }
+.demo-common-field textarea { resize:vertical; min-height:86px; }
+.demo-common-field input:focus,.demo-common-field textarea:focus { border-color:#2457d6; box-shadow:0 0 0 3px #2457d61a; }
+.demo-common-field input::placeholder,.demo-common-field textarea::placeholder { color:#b7c0cf; }
+.demo-common-field small { display:block; color:#c9233e; font-size:12px; margin-top:4px; }
+.demo-common-label { display:block; font-weight:650; font-size:13px; margin-bottom:7px; }
+.demo-common-submit { display:inline-flex; align-items:center; justify-content:center; gap:8px;
+ width:100%; min-height:46px; border:0; border-radius:9px; background:#11c5aa; color:#fff; font:inherit; font-weight:800; cursor:pointer; }
+.demo-common-submit:hover { background:#0fb499; }
+.demo-common-submit:disabled { cursor:wait; opacity:.65; }
+.demo-common-success { font-size:13px; color:#128346; margin:10px 0 0; }
+.demo-common-error { font-size:13px; color:#c9233e; margin:10px 0 0; }
+.demo-common-privacy { display:flex; align-items:center; gap:7px; color:#748099; font-size:11px; margin:12px 0 0; }
+.demo-common-trap { position:absolute!important; width:1px!important; height:1px!important; padding:0!important;
+ margin:-1px!important; overflow:hidden!important; clip:rect(0 0 0 0)!important; white-space:nowrap!important; border:0!important; }
+/* Homepage layout: preserved from original form */
+.demo-common-home { background:#fff; border:1px solid #e7ebf3; border-radius:17px; box-shadow:0 12px 48px #1f498b16; padding:32px; }
+.demo-common-home h3 { font-size:30px; margin:0; }
+.demo-common-home h3 span { color:#2455dd; }
+.demo-common-home > p { color:#73809a; font-size:14px; }
+.demo-common-home .demo-common-field { margin:14px 0; }
+.demo-common-home .demo-common-submit { background:#2455df; }
+.demo-common-home .demo-common-submit:hover { background:#1743c0; }
+/* Dynamic page hero */
+.demo-common-hero { width:100%; max-width:390px; margin:15px 0 0 auto; background:#fff; color:#10234f;
+ border:1px solid #e7edf7; border-radius:18px; box-shadow:0 18px 50px #0f234f38; overflow:hidden; }
+.demo-common-hero .pd-demo-head { padding:20px 22px 10px; }
+.demo-common-hero .pd-demo-head h2 { font-size:26px; line-height:1.15; color:#08265c; margin:0 0 5px; font-weight:900; }
+.demo-common-hero .pd-demo-head p { font-size:13px; line-height:1.45; color:#52637a; margin:0; }
+.demo-common-hero .demo-common-form { padding:0 22px 20px; }
+.demo-common-hero .pd-demo-phone { display:block; text-align:center; color:#2457d6; font-size:12px; font-weight:800; text-decoration:none; margin-top:9px; }
+/* Service pages include their own form box and heading */
+.demo-common-service { width:100%; }
+.demo-common-service .demo-common-submit { background:#11c5aa; }
+.demo-common-service .demo-common-submit:hover { background:#0fb499; }
+@media(max-width:991px) { .demo-common-hero { max-width:100%; margin:0 auto; } }
+@media(max-width:530px) { .demo-common-home { padding:23px; } }
+
+.demo-common-contact{padding:28px 32px;background:#fff;border-top:5px solid #00c6a7;border-radius:7px;box-shadow:0 12px 35px #193b6819}
+.demo-contact-heading{font-size:21px;font-weight:400;color:#778194;margin:0 0 22px}.demo-contact-heading strong{color:#2455df}
+.demo-common-contact .demo-common-field{margin-bottom:17px}
+.demo-common-contact .demo-common-label{font-size:14px;color:#3e4b5e;margin-bottom:8px}
+.demo-common-contact input,.demo-common-contact textarea{border-radius:5px}
+.demo-common-contact .demo-common-submit{border-radius:5px}
+@media(max-width:600px){.demo-common-contact{padding:22px 18px}}

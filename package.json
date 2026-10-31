@@ -1,0 +1,14 @@
+
+{
+  "name": "accutech-erp-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --kill-others -n LARAVEL,REACT -c blue,green \"npm run backend\" \"npm run frontend\"",
+    "backend": "C:\\xampp\\php\\php.exe backend/artisan serve --host=127.0.0.1 --port=8000",
+    "frontend": "npm --prefix frontend run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

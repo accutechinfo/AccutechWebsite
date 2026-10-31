@@ -1,0 +1,180 @@
+
+.accu-blog-detail {
+  background: #fff;
+  min-height: 100vh;
+}
+
+.accu-detail-container {
+  max-width: 1050px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+}
+
+.accu-detail-heading {
+  text-align: center;
+  background: #f3f6fd;
+  padding: 55px 20px 60px;
+}
+
+.accu-back-link,
+.accu-bottom-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: #2451df;
+  font-weight: 650;
+  font-size: 14px;
+}
+
+.accu-detail-heading h1 {
+  max-width: 900px;
+  margin: 25px auto;
+  color: #172447;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.accu-detail-meta {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: #738097;
+  font-size: 14px;
+}
+
+.accu-detail-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accu-detail-image {
+  margin: 45px auto 32px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.accu-detail-image img {
+  width: 100%;
+  max-height: 510px;
+  object-fit: cover;
+  display: block;
+}
+
+.accu-detail-excerpt {
+  font-size: 19px;
+  line-height: 1.9;
+  color: #4f5f76;
+  font-weight: 500;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e8edf5;
+}
+
+.accu-detail-content {
+  padding: 30px 0 40px;
+  color: #344258;
+  font-size: 16px;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+
+.accu-detail-content h2,
+.accu-detail-content h3,
+.accu-detail-content h4 {
+  color: #152647;
+  font-weight: 750;
+  margin: 28px 0 13px;
+  line-height: 1.4;
+}
+
+.accu-detail-content h2 {
+  font-size: 27px;
+}
+
+.accu-detail-content h3 {
+  font-size: 22px;
+}
+
+.accu-detail-content p {
+  margin: 0 0 17px;
+}
+
+.accu-detail-content ul,
+.accu-detail-content ol {
+  padding-left: 25px;
+  margin: 15px 0 25px;
+}
+
+.accu-detail-content li {
+  margin-bottom: 9px;
+}
+
+.accu-detail-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.accu-detail-content a {
+  color: #2451df;
+}
+
+.accu-detail-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.accu-detail-content th,
+.accu-detail-content td {
+  border: 1px solid #dfe5ef;
+  padding: 10px 14px;
+}
+
+.accu-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 24px 0;
+  border-top: 1px solid #e8edf5;
+}
+
+.accu-detail-tags span {
+  padding: 7px 12px;
+  background: #eef3ff;
+  color: #2451df;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.accu-bottom-back {
+  margin: 25px 0 80px;
+}
+
+.accu-detail-message {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+@media (max-width: 640px) {
+  .accu-detail-container {
+    width: calc(100% - 30px);
+  }
+
+  .accu-detail-heading {
+    padding: 40px 0;
+  }
+
+  .accu-detail-content {
+    font-size: 15px;
+  }
+
+  .accu-detail-image {
+    margin-top: 25px;
+  }
+}

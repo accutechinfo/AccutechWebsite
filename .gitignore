@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+dist/
+build/
+coverage/
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Laravel
+backend/vendor/
+backend/storage/logs/
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/bootstrap/cache/*.php
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

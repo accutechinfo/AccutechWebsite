@@ -1,0 +1,271 @@
+
+.accu-blogs-page {
+  background: #fff;
+  min-height: 100vh;
+  font-family: inherit;
+}
+
+.accu-blog-container {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.accu-blogs-hero {
+  padding: 72px 0 76px;
+  background: linear-gradient(115deg, #f4f7ff, #eef5ff);
+  text-align: center;
+}
+
+.accu-blogs-eyebrow {
+  display: inline-block;
+  padding: 8px 17px;
+  border-radius: 30px;
+  background: #e7edff;
+  color: #2451df;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 17px;
+}
+
+.accu-blogs-hero h1 {
+  font-size: clamp(32px, 4vw, 49px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #172447;
+  margin: 0 0 16px;
+}
+
+.accu-blogs-hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.85;
+  color: #66728b;
+}
+
+.accu-blog-breadcrumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  color: #727e94;
+  font-size: 14px;
+}
+
+.accu-blog-breadcrumb a {
+  color: #2451df;
+  text-decoration: none;
+}
+
+.accu-blogs-section {
+  padding: 75px 0 95px;
+}
+
+.accu-blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.accu-blog-card {
+  min-width: 0;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid #e9edf5;
+  box-shadow: 0 6px 25px rgba(24, 44, 80, .055);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.accu-blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(24, 44, 80, .12);
+}
+
+.accu-blog-card-image {
+  height: 225px;
+  display: block;
+  overflow: hidden;
+  background: #f1f4fa;
+}
+
+.accu-blog-card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.accu-blog-card:hover img {
+  transform: scale(1.05);
+}
+
+.accu-blog-no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  font-weight: 800;
+  color: #2451df;
+  background: #eef3ff;
+}
+
+.accu-blog-card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 24px 27px;
+  min-height: 315px;
+}
+
+.accu-blog-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.accu-blog-tags span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2752cc;
+  background: #edf2ff;
+  padding: 6px 9px;
+  border-radius: 5px;
+  overflow-wrap: anywhere;
+}
+
+.accu-blog-date {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #8090a9;
+  margin-bottom: 12px;
+}
+
+.accu-blog-card h2 {
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.45;
+  margin: 0 0 13px;
+}
+
+.accu-blog-card h2 a {
+  color: #172447;
+  text-decoration: none;
+}
+
+.accu-blog-card h2 a:hover {
+  color: #2451df;
+}
+
+.accu-blog-excerpt {
+  color: #67748b;
+  font-size: 14px;
+  line-height: 1.85;
+  margin: 0 0 22px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.accu-blog-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 750;
+  color: #2451df;
+  text-decoration: none;
+}
+
+.accu-blog-readmore:hover {
+  gap: 14px;
+}
+
+.accu-blog-message {
+  padding: 55px 20px;
+  text-align: center;
+  color: #66728b;
+  font-size: 16px;
+}
+
+.accu-blog-error {
+  color: #c02b2b;
+}
+
+.accu-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+
+.accu-pagination button {
+  min-width: 43px;
+  height: 43px;
+  padding: 0 12px;
+  border: 1px solid #e1e6ef;
+  border-radius: 8px;
+  background: #fff;
+  color: #233455;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accu-pagination button.active,
+.accu-pagination button:hover:not(:disabled) {
+  background: #2451df;
+  color: #fff;
+  border-color: #2451df;
+}
+
+.accu-pagination button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 991px) {
+  .accu-blogs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .accu-blog-container {
+    width: calc(100% - 30px);
+  }
+
+  .accu-blogs-hero {
+    padding: 50px 0 55px;
+  }
+
+  .accu-blogs-section {
+    padding: 45px 0 65px;
+  }
+
+  .accu-blogs-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .accu-blog-card-image {
+    height: 210px;
+  }
+
+  .accu-blog-card-body {
+    min-height: 0;
+  }
+}
