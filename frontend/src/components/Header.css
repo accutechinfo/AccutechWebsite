@@ -1,563 +1,455 @@
-
-/* ==========================================
-   ACCUTECH ERP HEADER
-========================================== */
-
-.accu-header {
-  --accu-announcement-height: 52px;
-
+/* ========================================================
+   ACCUTECH ERP – SPLIT GLASS HEADER
+   Scoped to .accu-header.accu-split-glass; does not style
+   Home, WebGL canvas, hero sections, footer or global tags.
+   ======================================================== */
+.accu-header.accu-split-glass {
+  --accu-announcement-height: 47px;
+  --accu-blue: #2c59e8;
+  --accu-text: #233655;
+  --accu-muted: #5f6f87;
   position: sticky;
   top: calc(-1 * var(--accu-announcement-height));
   z-index: 1100;
-
   width: 100%;
-  background: #ffffff;
+  background: transparent;
   font-family: inherit;
+  isolation: isolate;
 }
+.accu-header.accu-split-glass *,
+.accu-header.accu-split-glass *::before,
+.accu-header.accu-split-glass *::after { box-sizing: border-box; }
 
-/* ==========================================
-   ANNOUNCEMENT
-========================================== */
-
-.accu-header .accu-top-announcement {
-  width: 100%;
+/* -- Top layer: continuous colorful AccuChat marquee -- */
+.accu-header.accu-split-glass .accu-top-announcement {
   height: var(--accu-announcement-height);
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-
-  background: linear-gradient(
-    100deg,
-    #3152d1 0%,
-    #885294 30%,
-    #d64b4c 67%,
-    #5375dc 100%
-  );
-}
-
-.accu-header .accu-announcement-marquee {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(100deg,#263d98 0%,#5b4da1 30%,#d64b5e 70%,#5068c9 100%);
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,.12);
 }
-
-.accu-header .accu-announcement-track {
+.accu-header.accu-split-glass .accu-top-announcement::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg,rgba(255,255,255,.10),transparent 28%,rgba(255,255,255,.10));
+}
+.accu-header.accu-split-glass .accu-announcement-marquee {
+  width: 100%; height: 100%; display: flex; align-items: center; overflow: hidden;
+}
+.accu-header.accu-split-glass .accu-announcement-track {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
   width: max-content;
   min-width: max-content;
   height: 100%;
-
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-
-  animation: accuMarqueeMove 36s linear infinite;
+  animation: accuSplitMarquee 42s linear infinite;
   will-change: transform;
 }
-
-.accu-header .accu-announcement-group {
-  flex: 0 0 auto;
+.accu-header.accu-split-glass .accu-announcement-group {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   flex-wrap: nowrap;
   width: max-content;
   height: 100%;
 }
-
-.accu-header .accu-announcement-message {
-  flex: 0 0 auto;
+.accu-header.accu-split-glass .accu-announcement-message {
   display: inline-flex;
   align-items: center;
-
-  height: 100%;
-  padding: 0 90px;
-  margin: 0;
-
-  white-space: nowrap !important;
+  flex: 0 0 auto;
+  gap: 13px;
   width: max-content;
-
-  font-size: 14px;
-  font-weight: 750;
+  height: 100%;
+  padding: 0 clamp(28px,5vw,75px);
+  margin: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .01em;
   line-height: 1;
-
-  color: #ffffff !important;
-  text-decoration: none !important;
 }
+.accu-header.accu-split-glass .accu-announcement-message:hover { text-decoration: underline; }
+.accu-header.accu-split-glass .accu-announcement-message:focus-visible { outline: 2px solid white; outline-offset: -4px; }
+.accu-header.accu-split-glass .accu-announcement-sparkle { opacity: .8; font-size: 11px; }
+.accu-header.accu-split-glass .accu-top-announcement:hover .accu-announcement-track,
+.accu-header.accu-split-glass .accu-top-announcement:focus-within .accu-announcement-track { animation-play-state: paused; }
+@keyframes accuSplitMarquee { from {transform: translateX(0);} to {transform: translateX(-50%);} }
 
-.accu-header .accu-announcement-message:hover {
-  text-decoration: underline !important;
-}
-
-.accu-header .accu-top-announcement:hover
-.accu-announcement-track {
-  animation-play-state: paused;
-}
-
-@keyframes accuMarqueeMove {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* ==========================================
-   NAVIGATION
-========================================== */
-
-.accu-header .accu-navbar {
+/* -- Bottom layer: floating glass capsule, still in normal flow -- */
+.accu-header.accu-split-glass .accu-navbar {
   position: relative;
   width: 100%;
-  background: #ffffff;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  padding: 12px 16px 14px;
+  background: transparent;
+  box-shadow: none;
 }
-
-.accu-header .accu-navbar-container {
-  width: min(1200px, calc(100% - 40px));
-  min-height: 82px;
+.accu-header.accu-split-glass .accu-navbar-container {
+  width: min(1320px, 100%);
+  min-height: 78px;
   margin: 0 auto;
-
+  padding: 10px clamp(18px,2.5vw,36px);
   display: grid;
-  grid-template-columns: 160px minmax(0, 1fr) 160px;
+  grid-template-columns: 185px minmax(0,1fr);
+  gap: 18px;
   align-items: center;
+  position: relative;
+  border: 1px solid rgba(255,255,255,.93);
+  border-radius: 22px;
+  background: rgba(255,255,255,.83);
+  -webkit-backdrop-filter: blur(22px) saturate(175%);
+  backdrop-filter: blur(22px) saturate(175%);
+  box-shadow: 0 7px 26px rgba(33,58,116,.11), inset 0 1px 0 rgba(255,255,255,.95);
+  transition: background .25s ease,box-shadow .25s ease,border-color .25s ease;
 }
-
-/* LOGO */
-
-.accu-header .accu-logo-link {
+.accu-header.accu-split-glass.is-scrolled .accu-navbar-container {
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 8px 30px rgba(27,50,106,.17),inset 0 1px 0 white;
+}
+.accu-header.accu-split-glass .accu-logo-link {
   grid-column: 1;
-  justify-self: start;
-
   display: inline-flex;
+  justify-self: start;
   align-items: center;
   text-decoration: none;
-}
-
-.accu-header .accu-logo-image {
-  display: block;
-  width: 155px;
-  height: auto;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-/* CENTERED MENUS */
-
-.accu-header .accu-menu-wrapper {
-  grid-column: 2;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
   min-width: 0;
 }
-
-.accu-header .accu-menu {
+.accu-header.accu-split-glass .accu-logo-image {
+  width: 162px; max-width: 100%; height: auto; object-fit: contain; display: block;
+}
+.accu-header.accu-split-glass .accu-menu-wrapper {
+  grid-column: 2;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-
-  gap: clamp(12px, 1.2vw, 22px);
-
-  margin: 0;
-  padding: 0;
+  justify-content: flex-end;
+  min-width: 0;
+  width: 100%;
 }
-
-.accu-header .accu-menu-link {
+.accu-header.accu-split-glass .accu-menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: clamp(9px,1.3vw,22px);
+  margin: 0; padding: 0;
+}
+.accu-header.accu-split-glass .accu-menu-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-
-  padding: 12px 0;
+  padding: 11px 0;
   margin: 0;
-
   border: 0;
+  border-radius: 8px;
   background: transparent;
-  color: #69717d;
-
+  color: #4a5870;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 650;
-  line-height: 1.4;
-
+  line-height: 1.35;
   white-space: nowrap;
   text-decoration: none;
-
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color .2s ease,background .2s ease,box-shadow .2s ease,transform .2s ease;
 }
-
-.accu-header .accu-menu-link:hover,
-.accu-header .accu-menu-link.active {
-  color: #2451df;
+.accu-header.accu-split-glass .accu-menu-link:hover,
+.accu-header.accu-split-glass .accu-menu-link.active { color: #2859e7; }
+.accu-header.accu-split-glass .accu-menu-link:focus-visible,
+.accu-header.accu-split-glass button:focus-visible { outline: 2px solid #2e61e9; outline-offset: 3px; }
+.accu-header.accu-split-glass .accu-demo-link {
+  order: 5;
+  flex: 0 0 auto;
+  border-radius: 100px;
+  padding: 11px 17px;
+  color: white;
+  background: linear-gradient(110deg,#2859e7,#456eea);
+  box-shadow: 0 7px 16px rgba(40,89,231,.22);
 }
-
-.accu-header .accu-navbar-balance {
-  grid-column: 3;
-  width: 100%;
-  height: 1px;
+.accu-header.accu-split-glass .accu-demo-link:hover,
+.accu-header.accu-split-glass .accu-demo-link.active {
+  color: white;
+  background: linear-gradient(110deg,#1745c7,#345fe6);
+  box-shadow: 0 9px 20px rgba(40,89,231,.29);
+  transform: translateY(-1px);
 }
+.accu-header.accu-split-glass .accu-navbar-balance { display: none; }
+.accu-header.accu-split-glass .accu-mobile-menu-btn { display: none; }
 
-/* MOBILE MENU BUTTON */
-
-.accu-header .accu-mobile-menu-btn {
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  background: transparent;
-  border: 0;
-  color: #172447;
-  cursor: pointer;
-}
-
-/* ==========================================
-   SERVICES DROPDOWN
-========================================== */
-
-.accu-header .accu-dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.accu-header .accu-dropdown-btn {
-  appearance: none;
-}
-
-.accu-header .accu-dropdown-btn svg {
-  transition: transform 0.2s ease;
-}
-
-.accu-header .accu-dropdown.open
-.accu-dropdown-btn svg {
-  transform: rotate(180deg);
-}
-
-.accu-header .accu-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  width: 285px;
+/* -- Services submenu: glass card, no global menu changes -- */
+.accu-header.accu-split-glass .accu-dropdown { position: relative;display: flex;align-items: center; }
+.accu-header.accu-split-glass .accu-dropdown-btn { appearance: none; }
+.accu-header.accu-split-glass .accu-dropdown-btn svg { transition: transform .22s ease; }
+.accu-header.accu-split-glass .accu-dropdown.open .accu-dropdown-btn svg { transform: rotate(180deg); }
+.accu-header.accu-split-glass .accu-dropdown-menu,
+.accu-header.accu-split-glass .accu-submenu {
+  background: rgba(255,255,255,.97);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(207,219,244,.94);
+  border-radius: 16px;
+  box-shadow: 0 22px 55px rgba(25,49,102,.18);
   padding: 9px;
-
-  background: #ffffff;
-  border: 1px solid #e5eaf4;
-  border-radius: 12px;
-
-  box-shadow: 0 18px 45px rgba(17, 35, 74, 0.14);
-  z-index: 1110;
+  z-index: 1150;
 }
-
-.accu-header .accu-dropdown-item-wrapper {
-  position: relative;
+.accu-header.accu-split-glass .accu-dropdown-menu {
+  position: absolute;top: calc(100% + 12px);left: -12px;width: 290px;
 }
-
-.accu-header .accu-dropdown-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 7px;
+.accu-header.accu-split-glass .accu-dropdown-item-wrapper { position: relative; }
+.accu-header.accu-split-glass .accu-dropdown-row { display: flex;align-items: center;justify-content: space-between;border-radius: 8px; }
+.accu-header.accu-split-glass .accu-dropdown-row:hover { background: #eff4ff; }
+.accu-header.accu-split-glass .accu-dropdown-link {
+  display: block;flex: 1;min-width: 0;padding: 10px;
+  color: #344562;font-size: 13px;font-weight: 600;line-height: 1.4;text-decoration: none;
 }
-
-.accu-header .accu-dropdown-row:hover {
-  background: #f2f6ff;
+.accu-header.accu-split-glass .accu-dropdown-link:hover { color: #2859e7; }
+.accu-header.accu-split-glass .accu-service-placeholder { color: #738097;cursor: default; }
+.accu-header.accu-split-glass .accu-dropdown-arrow {
+  display: inline-flex;align-items: center;justify-content: center;
+  width: 33px;height: 36px;border: 0;background: transparent;
+  color: #667996;cursor: pointer;
 }
-
-.accu-header .accu-dropdown-link {
-  display: block;
-  flex: 1;
-  min-width: 0;
-
-  padding: 11px 10px;
-
-  color: #334155;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.45;
-  text-decoration: none;
+.accu-header.accu-split-glass .accu-dropdown-arrow:hover { color: #2859e7; }
+.accu-header.accu-split-glass .accu-submenu {
+  position: absolute;left: calc(100% + 8px);top: -9px;width: 250px;
+  max-height: 75vh;overflow-y: auto;
 }
-
-.accu-header .accu-dropdown-link:hover {
-  color: #2451df;
+.accu-header.accu-split-glass .accu-submenu a {
+  display: block;padding: 10px;color: #4a5972;font-size: 12px;
+  line-height: 1.5;text-decoration: none;border-radius: 7px;
 }
-
-/* PLACEHOLDER LINKS — DO NOT NAVIGATE */
-
-.accu-header .accu-service-placeholder {
-  cursor: default;
-  color: #64748b;
-}
-
-.accu-header .accu-service-placeholder:hover {
-  color: #64748b;
-}
-
-/* SUBMENU ARROW */
-
-.accu-header .accu-dropdown-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 32px;
-  height: 35px;
-
-  padding: 0;
-  border: 0;
-  background: transparent;
-
-  color: #64748b;
-  cursor: pointer;
-}
-
-.accu-header .accu-dropdown-arrow:hover {
-  color: #2451df;
-}
-
-/* NESTED SUBMENU */
-
-.accu-header .accu-submenu {
-  position: absolute;
-  left: calc(100% + 7px);
-  top: -9px;
-
-  width: 255px;
-  max-height: 75vh;
-  overflow-y: auto;
-
-  padding: 9px;
-
-  background: #ffffff;
-  border: 1px solid #e5eaf4;
-  border-radius: 12px;
-
-  box-shadow: 0 18px 45px rgba(17, 35, 74, 0.14);
-  z-index: 1120;
-}
-
-.accu-header .accu-submenu a {
-  display: block;
-  padding: 10px;
-
-  color: #475569;
-  font-size: 12px;
-  line-height: 1.5;
-  text-decoration: none;
-
-  border-radius: 7px;
-}
-
-.accu-header .accu-submenu a:hover {
-  background: #f2f6ff;
-  color: #2451df;
-}
-
-.accu-header .accu-submenu-divider {
-  height: 1px;
-  margin: 8px 0;
-  background: #e5eaf4;
-}
-
-.accu-header .accu-show-all {
-  color: #2451df !important;
-  font-weight: 750 !important;
-}
-
-/* ==========================================
-   MEDIUM DESKTOP
-========================================== */
+.accu-header.accu-split-glass .accu-submenu a:hover { background: #eef3ff;color: #2859e7; }
+.accu-header.accu-split-glass .accu-submenu-divider { height: 1px;margin: 7px 0;background: #e2e9f7; }
+.accu-header.accu-split-glass .accu-show-all { color: #2859e7!important;font-weight: 750; }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .accu-header .accu-navbar-container {
-    grid-template-columns: 140px minmax(0, 1fr) 140px;
-  }
-
-  .accu-header .accu-logo-image {
-    width: 135px;
-  }
-
-  .accu-header .accu-menu {
-    gap: 10px;
-  }
-
-  .accu-header .accu-menu-link {
-    font-size: 12px;
-  }
+  .accu-header.accu-split-glass .accu-navbar-container { grid-template-columns: 140px minmax(0,1fr);gap: 12px;padding: 10px 16px; }
+  .accu-header.accu-split-glass .accu-logo-image { width: 137px; }
+  .accu-header.accu-split-glass .accu-menu { gap: 9px; }
+  .accu-header.accu-split-glass .accu-menu-link { font-size: 12px; }
+  .accu-header.accu-split-glass .accu-demo-link { padding: 10px 12px; }
 }
-
-/* ==========================================
-   TABLET AND MOBILE
-========================================== */
 
 @media (max-width: 991px) {
-  .accu-header {
-    --accu-announcement-height: 45px;
+  .accu-header.accu-split-glass { --accu-announcement-height: 41px; }
+  .accu-header.accu-split-glass .accu-announcement-message { font-size: 11px;padding: 0 42px;gap: 9px; }
+  .accu-header.accu-split-glass .accu-navbar { padding: 8px 12px 10px; }
+  .accu-header.accu-split-glass .accu-navbar-container {
+    min-height: 66px;width: 100%;display: flex;justify-content: space-between;
+    align-items: center;gap: 12px;padding: 10px 16px;border-radius: 17px;
   }
-
-  .accu-header .accu-announcement-message {
-    font-size: 12px;
-    padding: 0 55px;
+  .accu-header.accu-split-glass .accu-logo-image { width: 146px; }
+  .accu-header.accu-split-glass .accu-mobile-menu-btn {
+    display: inline-flex;align-items: center;justify-content: center;
+    width: 42px;height: 42px;margin-left: auto;
+    color: #1d3156;background: #eaf0ff;border: 1px solid #d9e4fc;border-radius: 12px;
+    cursor: pointer;
   }
-
-  .accu-header .accu-navbar-container {
-    width: calc(100% - 32px);
-    min-height: 72px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
+  .accu-header.accu-split-glass .accu-menu-wrapper {
+    display: none;position: absolute;top: calc(100% + 8px);left: 0;right: 0;
+    width: 100%;max-height: min(75vh,calc(100dvh - 110px));overflow: auto;
+    background: rgba(255,255,255,.97);border: 1px solid #dbe5fb;
+    border-radius: 17px;padding: 12px 16px 18px;
+    -webkit-backdrop-filter: blur(22px);backdrop-filter: blur(22px);
+    box-shadow: 0 20px 45px rgba(35,56,100,.17);z-index: 1160;
   }
-
-  .accu-header .accu-logo-image {
-    width: 145px;
+  .accu-header.accu-split-glass .accu-menu-wrapper.show { display: block; }
+  .accu-header.accu-split-glass .accu-menu { display: flex;flex-direction: column;align-items: stretch;justify-content: flex-start;gap: 2px;width: 100%; }
+  .accu-header.accu-split-glass .accu-menu-link {
+    width: 100%;justify-content: flex-start;padding: 13px 10px;
+    font-size: 14px;border-radius: 9px;
   }
-
-  .accu-header .accu-mobile-menu-btn {
-    display: inline-flex;
-    margin-left: auto;
+  .accu-header.accu-split-glass .accu-menu-link:hover { background: #eff4ff; }
+  .accu-header.accu-split-glass .accu-dropdown { display: block;width: 100%; }
+  .accu-header.accu-split-glass .accu-dropdown-btn { justify-content: space-between; }
+  .accu-header.accu-split-glass .accu-dropdown-menu {
+    position: static;width: 100%;margin: 3px 0 8px;padding: 5px 8px;
+    border-radius: 11px;box-shadow: none;background: #f7faff;
   }
-
-  .accu-header .accu-navbar-balance {
-    display: none;
+  .accu-header.accu-split-glass .accu-submenu {
+    position: static;width: 100%;max-height: none;
+    margin: 0 0 8px 12px;padding: 3px 0 3px 12px;
+    background: transparent;border: 0;border-left: 2px solid #d7e3ff;
+    border-radius: 0;box-shadow: none;
   }
+  .accu-header.accu-split-glass .accu-submenu a { font-size: 13px; }
+  .accu-header.accu-split-glass .accu-demo-link {
+    justify-content: center;order: 0;margin-top: 8px;text-align: center;
+    padding: 13px 18px;color: #fff;
+  }
+  .accu-header.accu-split-glass .accu-demo-link:hover { background: #1745c7;color: #fff; }
+}
+@media (max-width: 480px) {
+  .accu-header.accu-split-glass .accu-navbar { padding: 8px 10px; }
+  .accu-header.accu-split-glass .accu-navbar-container { min-height: 62px;padding: 9px 12px; }
+  .accu-header.accu-split-glass .accu-logo-image { width: 134px; }
+  .accu-header.accu-split-glass .accu-announcement-message { font-size: 10.5px;padding: 0 33px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .accu-header.accu-split-glass .accu-announcement-track { animation: none; }
+  .accu-header.accu-split-glass .accu-menu-link,
+  .accu-header.accu-split-glass .accu-navbar-container { transition: none; }
+}
 
-  /* COLLAPSIBLE MOBILE NAV */
 
-  .accu-header .accu-menu-wrapper {
-    display: none;
+/* ===========================================================
+   ACCUTECH RESIZABLE NAVBAR — REFERENCE-LIKE SCROLL BEHAVIOR
+   Uses existing brand colors, original links and menu logic.
+   No CSS targets the 3D canvas or home page animations.
+   =========================================================== */
+.accu-header.accu-resizable-navbar {
+  /* Keep the announcement in normal document flow while the
+     navbar remains sticky once the announcement has scrolled off. */
+  background: transparent;
+}
+.accu-header.accu-resizable-navbar .accu-navbar {
+  padding: 10px clamp(14px, 3vw, 48px) 12px;
+  background: transparent;
+  transition: padding .46s cubic-bezier(.22,1,.36,1);
+}
+.accu-header.accu-resizable-navbar .accu-navbar-container {
+  width: min(1460px, 100%);
+  min-height: 78px;
+  grid-template-columns: 190px minmax(0, 1fr);
+  border-radius: 22px;
+  padding: 11px clamp(18px, 2.7vw, 40px);
+  background: rgba(255,255,255,.81);
+  -webkit-backdrop-filter: blur(20px) saturate(165%);
+  backdrop-filter: blur(20px) saturate(165%);
+  transition:
+    width .52s cubic-bezier(.22,1,.36,1),
+    min-height .52s cubic-bezier(.22,1,.36,1),
+    padding .52s cubic-bezier(.22,1,.36,1),
+    border-radius .52s cubic-bezier(.22,1,.36,1),
+    grid-template-columns .52s cubic-bezier(.22,1,.36,1),
+    background .32s ease,
+    box-shadow .32s ease;
+}
+.accu-header.accu-resizable-navbar .accu-logo-image {
+  width: 162px;
+  transition: width .52s cubic-bezier(.22,1,.36,1);
+}
+@media (min-width: 992px) {
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-navbar {
+    padding: 7px clamp(14px, 3vw, 48px) 9px;
+  }
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-navbar-container {
+    /* Spacious compact state — avoids the too-small 600px sample pill. */
+    width: min(1320px, 100%);
+    min-height: 64px;
+    grid-template-columns: 155px minmax(0,1fr);
+    border-radius: 999px;
+    padding: 7px clamp(16px, 2vw, 30px);
+    background: rgba(255,255,255,.91);
+    box-shadow: 0 12px 40px rgba(28,54,112,.15), inset 0 1px 0 #fff;
+  }
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-logo-image {width: 139px;}
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-menu-link {font-size: 12.5px;}
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-menu {gap: clamp(9px,1.25vw,20px);}
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-demo-link {padding: 10px 17px;}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .accu-header.accu-resizable-navbar .accu-navbar-container {grid-template-columns:150px minmax(0,1fr);gap:12px;}
+  .accu-header.accu-resizable-navbar .accu-logo-image {width:140px;}
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-navbar-container {
+    width: 100%;grid-template-columns:138px minmax(0,1fr);padding-inline:14px;
+  }
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-logo-image {width:126px;}
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-menu {gap:8px;}
+}
+@media (max-width: 991px) {
+  .accu-header.accu-resizable-navbar .accu-navbar {padding:8px 12px 10px;}
+  .accu-header.accu-resizable-navbar .accu-navbar-container {
+    width:100%;display:flex;min-height:66px;grid-template-columns:none;
+    padding:10px 16px;border-radius:17px;
+  }
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-navbar-container {
+    width:100%;min-height:60px;padding:8px 16px;border-radius:999px;
+  }
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-logo-image {width:132px;}
+  .accu-header.accu-resizable-navbar .accu-menu-wrapper.show {border-radius:16px;}
+}
+@media (max-width: 480px) {
+  .accu-header.accu-resizable-navbar .accu-navbar {padding:7px 10px 9px;}
+  .accu-header.accu-resizable-navbar .accu-navbar-container {min-height:62px;padding:9px 12px;}
+  .accu-header.accu-resizable-navbar.is-scrolled .accu-navbar-container {min-height:58px;padding:8px 12px;}
+}
+/* Keep dropdowns clear of the WebGL canvas, without moving the camera. */
+.accu-header.accu-resizable-navbar .accu-navbar,
+.accu-header.accu-resizable-navbar .accu-navbar-container {overflow:visible;}
+.accu-header.accu-resizable-navbar .accu-dropdown-menu {z-index:1200;}
+/* Anchor destinations don't hide underneath the sticky header. */
+#acref-root, #EnquiryForm, #about, #erp-services, #faqs, #testimonial {
+  scroll-margin-top: 110px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accu-header.accu-resizable-navbar .accu-navbar,
+  .accu-header.accu-resizable-navbar .accu-navbar-container,
+  .accu-header.accu-resizable-navbar .accu-logo-image {transition:none;}
+}
+
+/* Demo section scroll alignment; scoped to the existing Accutech page anchors. */
+#demo-info, #EnquiryForm { scroll-margin-top: 105px; }
+@media (max-width: 991px) { #demo-info, #EnquiryForm { scroll-margin-top: 85px; } }
+
+
+/* SERVICES DROPDOWN: POINTER BRIDGES — desktop only */
+@media (min-width: 992px) {
+  .accu-header.accu-split-glass .accu-dropdown-menu {
+    top: calc(100% + 8px);
+    overflow: visible;
+  }
+  .accu-header.accu-split-glass .accu-dropdown-menu::before {
+    content: "";
     position: absolute;
-    top: 100%;
+    top: -15px;
     left: 0;
     right: 0;
-
-    width: 100%;
-    max-height: calc(100vh - 90px);
-    overflow-y: auto;
-
-    padding: 12px 20px 20px;
-
-    background: #ffffff;
-    box-shadow: 0 15px 32px rgba(0, 0, 0, 0.12);
-
-    z-index: 1110;
-  }
-
-  .accu-header .accu-menu-wrapper.show {
-    display: block;
-  }
-
-  .accu-header .accu-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-
-    gap: 0;
-    width: 100%;
-  }
-
-  .accu-header .accu-menu-link {
-    width: 100%;
-    justify-content: flex-start;
-
-    padding: 13px 8px;
-    font-size: 15px;
-
-    border-bottom: 1px solid #f0f2f6;
-  }
-
-  .accu-header .accu-dropdown {
-    display: block;
-    width: 100%;
-  }
-
-  .accu-header .accu-dropdown-btn {
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .accu-header .accu-dropdown-menu {
-    position: static;
-
-    width: 100%;
-    margin: 5px 0 12px;
-    padding: 5px 8px;
-
-    border: 1px solid #e9eef6;
-    border-radius: 9px;
-
-    box-shadow: none;
-    background: #fafcff;
-  }
-
-  .accu-header .accu-dropdown-link {
-    font-size: 14px;
-    padding: 12px 10px;
-  }
-
-  .accu-header .accu-submenu {
-    position: static;
-
-    width: 100%;
-    max-height: none;
-
-    margin: 0 0 8px;
-    padding: 4px 0 4px 12px;
-
-    border: 0;
-    border-left: 2px solid #dce6ff;
-    border-radius: 0;
-
-    box-shadow: none;
+    height: 16px;
     background: transparent;
   }
-
-  .accu-header .accu-submenu a {
-    padding: 10px;
-    font-size: 13px;
+  .accu-header.accu-split-glass .accu-submenu {
+    left: calc(100% + 5px);
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  .accu-header.accu-split-glass .accu-dropdown-item-wrapper::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 12px;
+    height: 100%;
+    background: transparent;
+  }
+  .accu-header.accu-split-glass .accu-dropdown-menu,
+  .accu-header.accu-split-glass .accu-submenu {
+    pointer-events: auto;
   }
 }
 
-/* ==========================================
-   SMALL MOBILE
-========================================== */
-
-@media (max-width: 480px) {
-  .accu-header .accu-navbar-container {
-    width: calc(100% - 28px);
-    min-height: 68px;
-  }
-
-  .accu-header .accu-logo-image {
-    width: 130px;
-  }
-
-  .accu-header .accu-announcement-message {
-    font-size: 11px;
-    padding: 0 42px;
-  }
+/* V4 — one aligned background beneath the glass navbar and 3D hero.
+   Uses the EXISTING hero blue/white gradient. Announcement brand colors stay as-is. */
+.accu-header.accu-split-glass {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
-
-/* ACCESSIBILITY */
-
-@media (prefers-reduced-motion: reduce) {
-  .accu-header .accu-announcement-track {
-    animation: none;
-  }
-
-  .accu-header .accu-menu-link,
-  .accu-header .accu-dropdown-btn svg {
-    transition: none;
-  }
+.accu-header.accu-split-glass .accu-navbar {
+  background: linear-gradient(125deg,#ffffff 0%,#eff5ff 58%,#e6efff 100%) fixed !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin-bottom: -1px; /* remove fractional-pixel join on high-DPI displays */
+}
+/* Preserve the original white floating glass, including its shadow. */
+.accu-header.accu-split-glass .accu-navbar-container {
+  background: rgba(255,255,255,.83);
 }

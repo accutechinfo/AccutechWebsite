@@ -1,0 +1,859 @@
+/* Reference portfolio aesthetic, locally scoped. No styling of body, h1, .title, .para, .hn-* or nav. */
+.acref-root{--acref-bg:#f7faff;--acref-fg:#1b2e54;--acref-accent:#285ce5;position:relative;width:100%;background:linear-gradient(125deg,#ffffff 0%,#eff5ff 58%,#e6efff 100%);color:var(--acref-fg);isolation:isolate;overflow:clip;font-family:Geist,Inter,Arial,sans-serif}
+.acref-root *{box-sizing:border-box}
+.acref-root .acref-landing,.acref-root .acref-about,.acref-root .acref-what{width:100%;height:100svh;min-height:620px;position:relative;max-width:1920px;margin:0 auto;background:transparent}
+.acref-root .acref-character-container{position:absolute;inset:0;pointer-events:none;z-index:3}
+.acref-root .acref-character-model{position:sticky;top:0;height:100svh;width:100%;max-width:1920px;left:0;z-index:3;will-change:transform;pointer-events:none}
+.acref-root .acref-character-model canvas{display:block;width:100%;height:100%}
+.acref-root .acref-model-failure:not(:empty){position:absolute;top:22px;left:50%;transform:translateX(-50%);padding:12px 15px;background:#ffffff;color:#1b2e54;z-index:9;border:1px solid #bfd2fa;border-radius:8px;font-size:12px;max-width:440px;text-align:center}
+.acref-root .acref-intro{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:center;z-index:4;pointer-events:none;padding:0 7%}
+.acref-root .acref-left{justify-self:start;max-width:360px}
+.acref-root .acref-right{justify-self:end;max-width:410px;text-align:left}
+.acref-root .acref-left>span,.acref-root .acref-right>span{display:block;font-size:clamp(16px,2.1vw,32px);color:var(--acref-accent);font-weight:300;letter-spacing:2px}
+.acref-root .acref-left h1{font-size:clamp(36px,5vw,78px);line-height:.97;letter-spacing:1px;color:var(--acref-fg);font-weight:550;margin:9px 0}
+.acref-root .acref-right h2{font-size:clamp(28px,4vw,66px);line-height:1.02;letter-spacing:-1px;color:var(--acref-fg);font-weight:650;margin:6px 0}
+.acref-root .acref-right h2 strong{display:block;font-weight:700;color:var(--acref-accent)}
+.acref-root .acref-orb{position:absolute;top:8%;left:9%;width:40px;height:40px;background:#d9e9ff;border-radius:50%;box-shadow:0 0 0 12px #dae9ff77,0 0 38px #8bb1f755;pointer-events:none}
+.acref-root .acref-scroll-hint{position:absolute;bottom:25px;right:5%;font-size:11px;font-weight:650;letter-spacing:3px;color:#5974a2;text-decoration:none;z-index:5}
+.acref-root .acref-about{display:flex;align-items:center;justify-content:flex-end;padding:0 8%}
+.acref-root .acref-about-copy{width:48%;max-width:660px;z-index:4;position:relative}
+.acref-root .acref-about-copy h3{color:var(--acref-accent);font-size:clamp(18px,2vw,26px);letter-spacing:7px;font-weight:400;margin:0 0 33px}
+.acref-root .acref-about-copy p{font-size:clamp(23px,2.35vw,38px);font-weight:600;line-height:1.25;letter-spacing:.2px;color:var(--acref-fg);margin:0}
+.acref-root .acref-about-copy strong{font-weight:inherit;color:var(--acref-accent)}
+.acref-root .acref-what{display:flex;align-items:center;justify-content:space-between;gap:5%;padding:0 8%;z-index:4}
+.acref-root .acref-what-title{width:40%;position:relative;z-index:4}
+.acref-root .acref-what-title h2{font-size:clamp(55px,7vw,120px);line-height:.94;font-weight:650;letter-spacing:-4px;color:var(--acref-fg);margin:0}
+.acref-root .acref-what-title em{font-style:italic;color:var(--acref-accent)}
+.acref-root .acref-cards{width:39%;max-width:450px;position:relative;z-index:4;display:flex;flex-direction:column;gap:0}
+.acref-root .acref-card{min-height:215px;padding:26px 30px;border:1px dashed #779bd77a;position:relative;transition:background .3s, min-height .3s;background:#ffffffa6}
+.acref-root .acref-card:hover{min-height:265px;background:#e8f0ff}
+.acref-root .acref-card::before,.acref-root .acref-card::after{content:"";position:absolute;width:11px;height:11px;border-color:#285ce5;border-style:solid}
+.acref-root .acref-card::before{top:-2px;left:-2px;border-width:3px 0 0 3px}
+.acref-root .acref-card::after{bottom:-2px;right:-2px;border-width:0 3px 3px 0}
+.acref-root .acref-card h3{font-size:clamp(19px,2vw,31px);margin:0 0 7px;color:var(--acref-fg);font-weight:700}
+.acref-root .acref-card h4{font-size:13px;color:var(--acref-accent);font-weight:400;margin:0 0 12px;letter-spacing:1px}
+.acref-root .acref-card p{font-size:13px;font-weight:400;line-height:1.55;color:#546a8b;margin:0}
+.acref-root .acref-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.acref-root .acref-tags span{border:1px solid #aac2ee;background:#eaf1ff;padding:4px 8px;border-radius:20px;font-size:10px}
+.acref-root .acref-bottom-actions{height:0;position:relative;z-index:5;display:flex;gap:12px;justify-content:center;transform:translateY(-86px)}
+.acref-root .acref-bottom-actions a,.acref-root .acref-bottom-actions button{font:inherit;color:var(--acref-fg);background:#ffffff;border:1px solid #b5c9f0;border-radius:7px;padding:10px 16px;text-decoration:none;cursor:pointer;font-size:13px}
+@media(max-width:1024px){.acref-root .acref-intro{padding:0 5%}.acref-root .acref-about{padding:0 5%}.acref-root .acref-what{padding:0 5%}.acref-root .acref-what-title{width:36%}.acref-root .acref-cards{width:48%}}
+@media(max-width:760px){.acref-root .acref-character-container{display:none}.acref-root .acref-landing,.acref-root .acref-about,.acref-root .acref-what{height:auto;min-height:70svh;padding:80px 25px}.acref-root .acref-intro{position:relative;inset:auto;display:flex;flex-direction:column;gap:65px;padding:0;width:100%;align-items:flex-start}.acref-root .acref-right{align-self:flex-end}.acref-root .acref-about{justify-content:flex-start}.acref-root .acref-about-copy{width:100%}.acref-root .acref-what{display:block}.acref-root .acref-what-title{width:100%;margin-bottom:30px}.acref-root .acref-cards{width:100%;max-width:none}.acref-root .acref-what-title h2{font-size:60px}.acref-root .acref-bottom-actions{height:auto;transform:none;padding:15px 20px 38px;flex-wrap:wrap}}
+
+/* Daylight-only background effects; all selectors scoped to this component. */
+.acref-root .acref-landing::before,.acref-root .acref-about::before,.acref-root .acref-what::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 66% 43%,#d7e6ff8c,transparent 45%);z-index:0}
+.acref-root .acref-intro,.acref-root .acref-about-copy,.acref-root .acref-what-title,.acref-root .acref-cards{position:relative;z-index:4}
+.acref-root .acref-card:hover{box-shadow:0 12px 32px #1f4e9820}
+.acref-root .acref-bottom-actions a:hover,.acref-root .acref-bottom-actions button:hover{background:#285ce5;color:white}
+@media(max-width:760px){.acref-root .acref-landing,.acref-root .acref-about,.acref-root .acref-what{min-height:60svh}}
+
+/* ---- V8: actions within the third section, never in zero-height flow ---- */
+.acref-root .acref-what { position:relative; padding-bottom: 108px; }
+.acref-root .acref-bottom-actions {
+  position:absolute;
+  bottom:28px;
+  right:8%;
+  left:auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  align-items:center;
+  gap:12px;
+  height:auto;
+  width:auto;
+  transform:none;
+  z-index:12;
+}
+.acref-root .acref-bottom-actions a,
+.acref-root .acref-bottom-actions button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:46px;
+  min-width:158px;
+  padding:12px 22px;
+  border-radius:9px;
+  font-size:14px;
+  font-weight:750;
+  line-height:1.2;
+  white-space:nowrap;
+  text-decoration:none;
+  box-shadow:0 8px 24px rgba(26,75,160,.12);
+  transition:background .2s,color .2s,transform .2s;
+  cursor:pointer;
+}
+.acref-root .acref-bottom-actions a {
+  background:#285ce5;
+  border:1px solid #285ce5;
+  color:#fff;
+}
+.acref-root .acref-bottom-actions button {
+  background:#fff;
+  border:1px solid #bfd0f1;
+  color:#285ce5;
+}
+.acref-root .acref-bottom-actions a:hover {background:#1746bf;transform:translateY(-2px)}
+.acref-root .acref-bottom-actions button:hover {background:#eaf1ff;color:#1746bf;transform:translateY(-2px)}
+.acref-root .acref-bottom-actions :focus-visible {outline:3px solid #8aaaff;outline-offset:3px}
+@media (max-width:1024px) and (min-width:761px) {
+  .acref-root .acref-bottom-actions {right:5%;bottom:16px}
+  .acref-root .acref-bottom-actions a,.acref-root .acref-bottom-actions button {min-width:132px;padding:10px 15px;font-size:13px}
+}
+@media (max-width:760px) {
+  .acref-root .acref-what {padding-bottom:35px}
+  .acref-root .acref-bottom-actions {position:relative;inset:auto;justify-content:flex-start;margin-top:24px;padding:0}
+  .acref-root .acref-bottom-actions a,.acref-root .acref-bottom-actions button {flex:1 1 145px;min-width:0}
+}
+
+/* === V9: isolated first-screen spacing and gentle motion refinements === */
+.acref-root .acref-landing .acref-intro {
+  padding-top: clamp(55px, 8vh, 110px);
+  padding-bottom: 20px;
+}
+.acref-root .acref-left, .acref-root .acref-right {
+  min-width: 0;
+}
+.acref-root .acref-intro h1, .acref-root .acref-intro h2 {
+  overflow-wrap: normal;
+}
+.acref-root .acref-landing .acref-intro > div {
+  transform: translateY(24px);
+}
+@media (max-width: 1024px) {
+  .acref-root .acref-landing .acref-intro { padding-top: 75px; }
+  .acref-root .acref-landing .acref-intro > div { transform: translateY(12px); }
+}
+@media (max-width: 760px) {
+  .acref-root .acref-landing .acref-intro { padding-top: 30px; }
+  .acref-root .acref-landing .acref-intro > div { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .acref-root .acref-card, .acref-root .acref-bottom-actions a,
+  .acref-root .acref-bottom-actions button { transition-duration: 0.01ms; }
+}
+
+/* V10: original-style character reveal spans; scoped to only this 3D region */
+.acref-root .acref-fx-word { display:inline-block; white-space:nowrap; }
+.acref-root .acref-fx-char {display:inline-block; will-change:transform,opacity;}
+.acref-root .acref-landing .acref-intro {padding-top:clamp(90px,12vh,155px)!important;}
+.acref-root .acref-landing .acref-intro > div {transform:translateY(0)!important;}
+.acref-root .acref-left,.acref-root .acref-right {padding-top:clamp(18px,3vh,42px);}
+.acref-root .acref-intro{column-gap:clamp(40px,6vw,110px)}
+@media (max-width:760px){.acref-root .acref-landing .acref-intro{padding-top:50px!important}.acref-root .acref-left,.acref-root .acref-right{padding-top:0}}
+
+
+/* ============================================================
+   V14 — MOBILE PORTRAIT REFERENCE LAYOUT
+   Everything stays inside .acref-root. Desktop is unchanged.
+   ============================================================ */
+.acref-root .acref-landing {
+  background:
+    radial-gradient(ellipse 35% 55% at 50% 60%,rgba(139,102,201,.14),transparent 88%),
+    radial-gradient(ellipse 56% 70% at 55% 45%,rgba(169,200,255,.22),transparent 87%);
+}
+
+@media (max-width:760px) {
+  /* A single screen, not the desktop two-column grid. */
+  .acref-root .acref-landing {
+    display:block;
+    width:100%;
+    height:calc(100svh - 0px);
+    min-height:570px;
+    max-height:none;
+    padding:0;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .acref-root .acref-landing::before {
+    background:radial-gradient(ellipse 65% 40% at 50% 53%,rgba(161,125,219,.11),transparent 80%);
+  }
+  /* Keep the real WebGL canvas active, clipped to the portrait area.
+     Fade the desk/keyboard BEFORE the bottom headline begins. */
+  .acref-root .acref-character-container {
+    display:block!important;
+    position:absolute!important;
+    inset:0 auto auto 0!important;
+    width:100%!important;
+    height:100%!important;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:2;
+    mask-image:linear-gradient(to bottom,transparent 10%,#000 26%,#000 58%,transparent 73%);
+    -webkit-mask-image:linear-gradient(to bottom,transparent 10%,#000 26%,#000 58%,transparent 73%);
+  }
+  .acref-root .acref-character-model {
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    pointer-events:none;
+    transform:none!important;
+    will-change:auto;
+  }
+  .acref-root .acref-character-model canvas {
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+  }
+  .acref-root .acref-intro,
+  .acref-root .acref-landing .acref-intro {
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+    padding:0!important;
+    margin:0!important;
+    transform:none!important;
+    z-index:5;
+    pointer-events:none;
+  }
+  .acref-root .acref-landing .acref-intro > div {transform:none!important}
+  .acref-root .acref-left {
+    position:absolute!important;
+    top:clamp(20px,4svh,42px)!important;
+    left:6%!important;
+    right:auto!important;
+    width:88%!important;
+    max-width:none!important;
+    padding:0!important;
+    margin:0!important;
+    text-align:left!important;
+  }
+  .acref-root .acref-left>span {
+    display:block;
+    color:#285ce5;
+    font-size:clamp(15px,4.1vw,20px);
+    letter-spacing:.1em;
+    line-height:1.3;
+  }
+  .acref-root .acref-left h1 {
+    font-size:clamp(34px,9vw,49px)!important;
+    line-height:1.01!important;
+    margin:6px 0!important;
+    letter-spacing:-.025em!important;
+  }
+  /* Always below the character, instead of overlaying the keyboard. */
+  .acref-root .acref-right {
+    position:absolute!important;
+    top:auto!important;
+    bottom:clamp(26px,5svh,52px)!important;
+    left:6%!important;
+    right:6%!important;
+    width:88%!important;
+    max-width:none!important;
+    padding:0!important;
+    margin:0!important;
+    text-align:center!important;
+  }
+  .acref-root .acref-right>span {
+    font-size:clamp(15px,4vw,21px);
+    letter-spacing:.075em;
+    line-height:1.25;
+  }
+  .acref-root .acref-right h2 {
+    font-size:clamp(24px,6.7vw,34px)!important;
+    line-height:1.07!important;
+    letter-spacing:-.025em!important;
+    margin:7px 0 0!important;
+  }
+  .acref-root .acref-right h2 strong {display:block}
+  .acref-root .acref-orb {top:27%;left:8%;width:24px;height:24px;opacity:.7}
+  .acref-root .acref-scroll-hint {display:none!important}
+  .acref-root .acref-about,.acref-root .acref-what {
+    height:auto!important;
+    min-height:0!important;
+    padding:58px 22px!important;
+  }
+  .acref-root .acref-about-copy {width:100%!important}
+  .acref-root .acref-what {display:block!important}
+  .acref-root .acref-what-title,.acref-root .acref-cards {width:100%!important;max-width:none!important}
+  .acref-root .acref-what-title h2 {font-size:clamp(44px,12vw,64px)!important}
+  .acref-root .acref-card {min-height:0;padding:22px 20px}
+  .acref-root .acref-bottom-actions {position:relative;inset:auto;transform:none;justify-content:flex-start;margin-top:22px;padding:0}
+}
+@media (max-width:390px) and (max-height:720px) {
+  .acref-root .acref-left {top:14px!important}
+  .acref-root .acref-left h1 {font-size:clamp(32px,8.5vw,40px)!important}
+  .acref-root .acref-right {bottom:15px!important}
+  .acref-root .acref-right h2 {font-size:24px!important}
+}
+/* Mobile landscape: prevent giant letterforms. */
+@media (max-height:500px) and (max-width:900px) and (orientation:landscape) {
+  .acref-root .acref-landing {min-height:420px}
+  .acref-root .acref-left h1 {font-size:32px!important}
+  .acref-root .acref-right h2 {font-size:23px!important}
+}
+
+/* V15 — mobile-only framing: prevent giant face in About and keep the entire
+   canvas confined to the first screen. Desktop animation is unchanged. */
+@media (max-width: 760px) {
+  .acref-root .acref-character-container {
+    position: absolute !important;
+    inset: 0 0 auto 0 !important;
+    height: 100svh !important;
+    max-height: 100svh !important;
+    overflow: hidden !important;
+    clip-path: inset(0 0 0 0);
+    z-index: 2 !important;
+    mask-image: linear-gradient(to bottom, transparent 20%, #000 32%, #000 70%, transparent 88%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 20%, #000 32%, #000 70%, transparent 88%) !important;
+  }
+  .acref-root .acref-character-model {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  .acref-root .acref-landing .acref-left {z-index: 5 !important;}
+  .acref-root .acref-landing .acref-right {z-index: 5 !important;}
+  .acref-root .acref-about, .acref-root .acref-what {
+    isolation: isolate;
+    z-index: 4;
+    background: linear-gradient(135deg, #f9fbff, #eaf2ff);
+  }
+}
+@media screen and (max-width: 767px) {
+
+  .acref-root {
+    --mobile-character-up: 100px;
+  }
+
+  .acref-root canvas {
+    transform: translateY(
+      calc(-1 * var(--mobile-character-up))
+    ) !important;
+  }
+
+}
+
+/* Smaller mobile screens */
+@media screen and (max-width: 390px) {
+
+  .acref-root {
+    --mobile-character-up: 85px;
+  }
+
+}
+
+/* Friendly avatar presentation: light studio halo, no effect on the 3D rig. */
+.acref-root .acref-landing::after {
+  content: ""; position: absolute; pointer-events: none; z-index: 0;
+  left: 36%; top: 13%; width: 32%; height: 72%; border-radius: 50%;
+  background: radial-gradient(ellipse,rgba(204,213,255,.39) 0%,rgba(209,228,255,.16) 48%,transparent 75%);
+  filter: blur(20px);
+}
+@media (max-width:760px) {
+  .acref-root .acref-landing::after {left:14%;top:29%;width:72%;height:45%;}
+}
+
+/* V4 — continuous fixed-alignment backdrop with navbar (no separator).
+   Keeps the SAME original hero colors, and leaves WebGL / scroll untouched. */
+.acref-root {
+  background: linear-gradient(125deg,#ffffff 0%,#eff5ff 58%,#e6efff 100%) fixed !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.acref-root .acref-landing {
+  background: transparent !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+/* Fade the hero-only radial glow in so it doesn't start at a hard horizontal edge. */
+.acref-root .acref-landing::before {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+}
+
+
+/* ===============================================================
+   CONTENT + HEADROOM REFINEMENTS (November 2026)
+   Scoped to the 3D hero. No header or site-wide CSS modified.
+   =============================================================== */
+@media (min-width: 761px) {
+  .acref-root .acref-intro {
+    padding-left: clamp(50px, 6.5vw, 135px);
+    padding-right: clamp(50px, 6.5vw, 135px);
+  }
+  .acref-root .acref-left { max-width: clamp(310px, 27vw, 445px); }
+  .acref-root .acref-right { max-width: clamp(320px, 29vw, 475px); }
+  .acref-root .acref-about { padding: 0 clamp(55px, 7vw, 145px); }
+  .acref-root .acref-about-copy {
+    width: min(47%, 640px);
+    max-width: 640px;
+    padding-top: clamp(64px, 11vh, 120px);
+    padding-bottom: 25px;
+  }
+  .acref-root .acref-about-copy h3 {
+    font-size: clamp(17px, 1.4vw, 23px);
+    letter-spacing: .24em;
+    margin-bottom: 22px;
+  }
+  .acref-root .acref-about-copy p {
+    font-size: clamp(19px, 1.65vw, 27px);
+    line-height: 1.48;
+    font-weight: 600;
+    letter-spacing: -.015em;
+  }
+  .acref-root .acref-cards { width: 43%; max-width: 510px; }
+  .acref-root .acref-card {
+    min-height: 226px;
+    padding: 23px 26px;
+  }
+  .acref-root .acref-card h3 { font-size: clamp(19px, 1.65vw, 27px); }
+  .acref-root .acref-card h4 {
+    font-size: clamp(13px, 1vw, 15px);
+    font-weight: 650;
+    line-height: 1.4;
+  }
+  .acref-root .acref-card p { font-size: clamp(12px, .9vw, 14px); line-height: 1.65; }
+}
+.acref-root .acref-hero-description {
+  max-width: 380px;
+  margin: 22px 0 0;
+  color: #536b91;
+  font-size: clamp(14px, 1.03vw, 17px);
+  line-height: 1.72;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.acref-root .acref-about-copy p { overflow-wrap: break-word; }
+.acref-root .acref-card:hover { min-height: 226px; }
+@media (min-width: 761px) and (max-height: 760px) {
+  .acref-root .acref-about-copy p { font-size: clamp(18px, 1.45vw, 23px); line-height: 1.4; }
+  .acref-root .acref-about-copy { padding-top: 75px; }
+  .acref-root .acref-card { padding: 18px 24px; min-height: 205px; }
+  .acref-root .acref-card:hover { min-height: 205px; }
+}
+@media (max-width: 760px) {
+  .acref-root .acref-landing {
+    min-height: 680px;
+    height: max(100svh, 680px);
+  }
+  .acref-root .acref-left { top: 20px !important; }
+  .acref-root .acref-hero-description {
+    margin-top: 12px;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1.48;
+  }
+  .acref-root .acref-right { bottom: 25px !important; }
+  .acref-root .acref-about-copy { padding-top: 0; }
+  .acref-root .acref-about-copy h3 { font-size: 17px; margin-bottom: 17px; letter-spacing: .18em; }
+  .acref-root .acref-about-copy p { font-size: clamp(17px, 4.4vw, 22px); line-height: 1.48; font-weight: 600; }
+  .acref-root .acref-card h3 { font-size: 21px; }
+  .acref-root .acref-card h4 { font-size: 13px; line-height: 1.4; font-weight: 650; }
+  .acref-root .acref-card p { font-size: 13px; line-height: 1.65; }
+  .acref-root .acref-card { min-height: 0; }
+  .acref-root .acref-card:hover { min-height: 0; }
+}
+
+
+/* ============================================================
+   V8: Structured homepage copy - November 2026
+   These overrides are scoped to .acref-root and do not style
+   the glass header, demo form, testimonials or footer.
+   ============================================================ */
+@media (min-width: 761px) {
+  .acref-root .acref-landing { min-height: 760px; }
+  .acref-root .acref-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(100px, 11vw, 210px);
+    padding-left: clamp(55px, 6.5vw, 125px);
+    padding-right: clamp(55px, 6.5vw, 125px);
+  }
+  .acref-root .acref-left { max-width: 390px; }
+  .acref-root .acref-left h1 {
+    font-size: clamp(48px, 4.7vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -.035em;
+  }
+  .acref-root .acref-right {
+    width: 100%;
+    max-width: 480px;
+    justify-self: end;
+  }
+  .acref-root .acref-right .acref-business-kicker {
+    font-size: clamp(17px, 1.6vw, 24px);
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: .09em;
+  }
+  .acref-root .acref-service-overview {
+    display: grid;
+    gap: clamp(18px, 3.1vh, 30px);
+    margin-top: 17px;
+  }
+  .acref-root .acref-service-item {
+    padding: 0 0 0 16px;
+    border-left: 3px solid rgba(40,92,229,.45);
+  }
+  .acref-root .acref-service-item h2 {
+    font-size: clamp(25px, 2.25vw, 36px);
+    line-height: 1.16;
+    font-weight: 700;
+    letter-spacing: -.03em;
+    margin: 0 0 10px;
+  }
+  .acref-root .acref-service-item h2 strong {
+    display: inline;
+    color: var(--acref-accent);
+  }
+  .acref-root .acref-service-item p {
+    font-size: clamp(14px, .95vw, 16px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: #536b91;
+    margin: 0;
+  }
+  .acref-root .acref-hero-description {
+    margin-top: 19px;
+    font-size: clamp(14px, 1vw, 17px);
+    line-height: 1.7;
+    max-width: 365px;
+  }
+  .acref-root .acref-about-copy {
+    max-width: 700px;
+    width: min(48%, 700px);
+    padding-top: 76px;
+  }
+  .acref-root .acref-about-copy p {
+    font-size: clamp(23px, 1.82vw, 31px);
+    line-height: 1.37;
+    font-weight: 600;
+  }
+  .acref-root .acref-cards { width: 44%; max-width: 550px; }
+  .acref-root .acref-card { padding: 22px 27px; min-height: 235px; }
+  .acref-root .acref-card:hover { min-height: 235px; }
+  .acref-root .acref-card h3 { font-size: clamp(21px, 1.6vw, 27px); }
+  .acref-root .acref-card h4 { font-size: 15px; }
+  .acref-root .acref-card p { font-size: 15px; line-height: 1.55; }
+}
+@media (min-width: 761px) and (max-width: 1199px) {
+  .acref-root .acref-intro { column-gap: 50px; }
+  .acref-root .acref-service-item h2 { font-size: clamp(22px, 2.5vw, 29px); }
+  .acref-root .acref-service-item p { font-size: 14px; }
+  .acref-root .acref-about-copy p { font-size: clamp(20px, 2vw, 25px); }
+}
+@media (min-width: 761px) and (max-height: 790px) {
+  .acref-root .acref-landing { min-height: 760px; }
+  .acref-root .acref-landing .acref-intro { padding-top: 85px !important; }
+  .acref-root .acref-service-overview { gap: 14px; margin-top: 11px; }
+  .acref-root .acref-service-item h2 { margin-bottom: 6px; }
+  .acref-root .acref-service-item p { line-height: 1.5; }
+}
+@media (max-width: 760px) {
+  /* Keep avatar between the welcome copy and stacked feature copy. */
+  .acref-root .acref-landing {
+    min-height: 1050px !important;
+    height: max(1050px, 125svh) !important;
+  }
+  .acref-root .acref-left {
+    top: 25px !important;
+    left: 6% !important;
+    width: 88% !important;
+  }
+  .acref-root .acref-hero-description {
+    font-size: 12px;
+    max-width: 330px;
+    line-height: 1.55;
+  }
+  .acref-root .acref-right {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 20px !important;
+    left: 5% !important;
+    right: 5% !important;
+    width: 90% !important;
+    padding: 17px !important;
+    background: rgba(255,255,255,.84);
+    border: 1px solid rgba(197,214,246,.68);
+    border-radius: 17px;
+    box-shadow: 0 12px 34px rgba(43,83,155,.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-align: left !important;
+  }
+  .acref-root .acref-right .acref-business-kicker {
+    font-size: 14px;
+    letter-spacing: .07em;
+    font-weight: 600;
+  }
+  .acref-root .acref-service-overview { display: grid; gap: 15px; margin-top: 11px; }
+  .acref-root .acref-service-item { border-left: 2px solid #285ce5; padding-left: 11px; }
+  .acref-root .acref-service-item h2 {
+    font-size: clamp(19px, 5.2vw, 24px) !important;
+    line-height: 1.18 !important;
+    margin: 0 0 6px !important;
+    letter-spacing: -.02em !important;
+  }
+  .acref-root .acref-service-item h2 strong { display: inline !important; }
+  .acref-root .acref-service-item p {
+    font-size: 12px;
+    line-height: 1.52;
+    font-weight: 400;
+    color: #536b91;
+    margin: 0;
+  }
+  .acref-root .acref-about-copy h3 { font-size: 19px; }
+  .acref-root .acref-about-copy p {
+    font-size: clamp(19px, 5vw, 23px);
+    line-height: 1.46;
+  }
+  .acref-root .acref-card p { font-size: 14px; }
+}
+@media (max-width: 390px) {
+  .acref-root .acref-landing { min-height: 1100px !important; height: 1100px !important; }
+  .acref-root .acref-right { padding: 13px !important; }
+  .acref-root .acref-service-item p { font-size: 11.5px; }
+}
+
+/* V8 — camera-balanced content. Scoped to this character component only. */
+@media (min-width: 1100px) {
+  /* Separates hero copy from the WebGL character silhouette. */
+  .acref-root .acref-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(145px, 13vw, 240px);
+    padding-left: clamp(65px, 6.5vw, 120px);
+    padding-right: clamp(72px, 6vw, 116px);
+  }
+  .acref-root .acref-right {
+    width: 100%;
+    max-width: 490px;
+    position: relative;
+    z-index: 6;
+  }
+  .acref-root .acref-service-overview {gap: clamp(18px, 2.8vh, 24px);}
+  .acref-root .acref-service-item {
+    padding-left: 16px;
+    background: linear-gradient(90deg, rgba(245,249,255,.79),rgba(245,249,255,.06));
+    border-radius: 0 8px 8px 0;
+  }
+  .acref-root .acref-service-item h2 {
+    font-size: clamp(25px, 2.1vw, 33px);
+    margin-bottom: 8px;
+  }
+  .acref-root .acref-service-item p {
+    font-size: clamp(14px, .93vw, 16px);
+    line-height: 1.52;
+  }
+  .acref-root .acref-about-copy {
+    padding-top: 5px;
+    padding-bottom: 38px;
+  }
+}
+@media (min-width: 761px) and (max-width:1099px) {
+  .acref-root .acref-intro {column-gap: 75px;}
+  .acref-root .acref-right {max-width: 420px; z-index:6;}
+  .acref-root .acref-service-item h2 {font-size: clamp(22px, 2.6vw, 27px);}
+  .acref-root .acref-service-item p {font-size:14px;}
+  .acref-root .acref-about-copy {padding-top: 10px;}
+}
+@media(max-width:760px) {
+  /* Preserve the portrait 3D layout without desktop-only camera offsets. */
+  .acref-root .acref-right {z-index:6;}
+  .acref-root .acref-service-item {background:transparent;}
+}
+
+/* ================================================================
+   V9: TEXT SIZE + REVEAL — TEXT ONLY, LEAVE 3D CAMERA AS-IS
+   Scoped to component, preserving the current character scale.
+   ================================================================ */
+@media (min-width: 1100px) {
+  .acref-root .acref-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(110px, 12vw, 215px);
+    padding-left: clamp(56px, 6.4vw, 118px);
+    padding-right: clamp(56px, 6.4vw, 118px);
+  }
+  .acref-root .acref-left {max-width: 410px;}
+  .acref-root .acref-left h1 {
+    font-size: clamp(45px, 3.7vw, 62px);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+    font-weight: 730;
+    margin: 10px 0 0;
+  }
+  .acref-root .acref-hero-description {
+    font-size: clamp(15px, 1.02vw, 18px);
+    line-height: 1.7;
+    max-width: 385px;
+    margin-top: 23px;
+  }
+  .acref-root .acref-right {max-width: 470px; width:100%;}
+  .acref-root .acref-right .acref-business-kicker {
+    font-size: clamp(18px,1.5vw,24px);
+    letter-spacing: .075em;
+    font-weight: 450;
+  }
+  .acref-root .acref-service-overview {gap: 22px; margin-top: 17px;}
+  .acref-root .acref-service-item {border-left: 2px solid #91aff6; padding-left: 17px;}
+  .acref-root .acref-service-item h2 {
+    font-size: clamp(22px, 1.8vw, 30px);
+    line-height: 1.17;
+    letter-spacing: -.025em;
+    font-weight: 720;
+    margin: 0 0 10px;
+  }
+  .acref-root .acref-service-item p {
+    font-size: clamp(14px, .95vw, 16px);
+    line-height: 1.55;
+    margin: 0;
+    color: #52668a;
+  }
+  .acref-root .acref-about-copy p {
+    font-size: clamp(22px, 1.75vw, 29px);
+    line-height: 1.42;
+  }
+}
+@media (min-width: 761px) and (max-width: 1099px) {
+  .acref-root .acref-left h1 {font-size: clamp(36px,4.1vw,48px); line-height:1.1;}
+  .acref-root .acref-service-item h2 {font-size: clamp(21px,2.25vw,26px);}
+  .acref-root .acref-service-item p {font-size: 14px; line-height: 1.55;}
+  .acref-root .acref-service-overview {gap:18px;}
+  .acref-root .acref-about-copy p {font-size:clamp(19px,2vw,24px);}
+}
+@media (max-width: 760px) {
+  .acref-root .acref-left h1 {font-size:clamp(34px,8.1vw,46px) !important; line-height:1.08 !important;}
+  .acref-root .acref-hero-description {font-size:12.5px;line-height:1.6;max-width:320px;}
+  .acref-root .acref-right .acref-business-kicker {font-size:16px;}
+  .acref-root .acref-service-item h2 {font-size:clamp(19px,5vw,23px)!important;line-height:1.18!important;}
+  .acref-root .acref-service-item p {font-size:13px;line-height:1.55;}
+  .acref-root .acref-service-overview {gap:15px;}
+  .acref-root .acref-about-copy p {font-size:clamp(18px,4.7vw,23px);line-height:1.45;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .acref-root .acref-fx-char {will-change:auto;}
+}
+
+
+/* ==============================================================
+   V10  — PREMIUM HERO TYPOGRAPHY / SOFT FEATURE PANELS
+   Typography only. Do not modify character transforms, cameras,
+   GSAP scroll timelines, header, announcement bar or other pages.
+   ============================================================== */
+@media (min-width: 1100px) {
+  .acref-root .acref-landing .acref-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(125px, 15vw, 245px);
+    padding-left: clamp(70px, 6.6vw, 122px);
+    padding-right: clamp(70px, 6.6vw, 122px);
+    padding-top: clamp(75px, 11vh, 130px) !important;
+  }
+  .acref-root .acref-left {
+    max-width: 390px;
+    padding-top: 0;
+  }
+  .acref-root .acref-left > span {
+    font-size: clamp(16px, 1.35vw, 22px);
+    font-weight: 550;
+    letter-spacing: .20em;
+    line-height: 1.3;
+  }
+  .acref-root .acref-left h1 {
+    font-size: clamp(45px, 3.8vw, 62px);
+    font-weight: 800;
+    letter-spacing: -.052em;
+    line-height: 1.04;
+    margin: 13px 0 0;
+    text-wrap: balance;
+    color: #192c50;
+  }
+  .acref-root .acref-hero-description {
+    max-width: 340px;
+    font-size: clamp(15px, 1vw, 16px);
+    line-height: 1.75;
+    margin-top: 26px;
+    font-weight: 400;
+    color: #5c7092;
+  }
+  .acref-root .acref-right {
+    width: 100%;
+    max-width: 440px;
+    padding-top: 0;
+  }
+  .acref-root .acref-right .acref-business-kicker {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #285ce5;
+    margin: 0 0 14px;
+  }
+  .acref-root .acref-service-overview {
+    display: grid;
+    gap: 13px;
+    margin: 0;
+  }
+  .acref-root .acref-service-item {
+    position: relative;
+    min-height: 0;
+    margin: 0;
+    padding: 20px 21px 21px 23px;
+    border: 1px solid rgba(175,196,232,.62);
+    border-left: 3px solid #3868e8;
+    border-radius: 13px;
+    background: linear-gradient(120deg,rgba(255,255,255,.83),rgba(248,251,255,.57));
+    box-shadow: 0 12px 35px rgba(34,77,148,.055);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .acref-root .acref-service-item:hover {
+    border-color: #a9c0ee;
+    border-left-color: #285ce5;
+    box-shadow: 0 15px 35px rgba(34,77,148,.1);
+  }
+  .acref-root .acref-service-item h2 {
+    font-size: clamp(21px, 1.48vw, 25px);
+    font-weight: 750;
+    line-height: 1.19;
+    letter-spacing: -.035em;
+    text-wrap: balance;
+    color: #1b2e54;
+    margin: 0 0 9px;
+  }
+  .acref-root .acref-service-item h2 strong {
+    display: inline !important;
+    font-weight: inherit;
+    color: #285ce5;
+  }
+  .acref-root .acref-service-item p {
+    max-width: 100%;
+    font-size: clamp(13px, .88vw, 14.5px);
+    font-weight: 400;
+    line-height: 1.61;
+    letter-spacing: 0;
+    color: #627594;
+    margin: 0;
+  }
+}
+@media (min-width: 761px) and (max-width: 1099px) {
+  .acref-root .acref-landing .acref-intro {column-gap: 60px; padding-top:75px!important;}
+  .acref-root .acref-left > span {font-size: 16px; letter-spacing: .16em;}
+  .acref-root .acref-left h1 {font-size:clamp(36px,4vw,49px);letter-spacing:-.045em;font-weight:780;}
+  .acref-root .acref-hero-description {max-width:320px;line-height:1.64;font-size:14px;}
+  .acref-root .acref-right .acref-business-kicker {font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:750;}
+  .acref-root .acref-service-overview {gap:10px;margin-top:10px;}
+  .acref-root .acref-service-item {padding:15px 16px;border:1px solid #c7d8f3;border-left:3px solid #3868e8;border-radius:11px;background:#ffffffb3;}
+  .acref-root .acref-service-item h2 {font-size:clamp(18px,2vw,23px);line-height:1.17;margin-bottom:8px;font-weight:750;letter-spacing:-.025em;}
+  .acref-root .acref-service-item p {font-size:12.5px;line-height:1.53;color:#627594;}
+}
+@media (max-width: 760px) {
+  /* Keep the original portrait scene positioning and character visible. */
+  .acref-root .acref-left > span {font-weight:600;letter-spacing:.13em;}
+  .acref-root .acref-left h1 {font-weight:800;letter-spacing:-.047em!important;}
+  .acref-root .acref-right .acref-business-kicker {font-size:12px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;}
+  .acref-root .acref-service-overview {gap:9px;margin-top:10px;}
+  .acref-root .acref-service-item {border:1px solid rgba(170,195,234,.78);border-left:3px solid #3868e8;border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.83);box-shadow:0 6px 18px rgba(35,76,140,.05);}
+  .acref-root .acref-service-item h2 {font-size:clamp(16px,4vw,20px)!important;letter-spacing:-.025em;margin-bottom:5px;}
+  .acref-root .acref-service-item p {font-size:11.5px;line-height:1.42;color:#5d7293;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .acref-root .acref-service-item {transition:none;}
+}

@@ -1,0 +1,35 @@
+/* Component-scoped: no modifications to header, hero, or global typography */
+.atm-section{--atm-blue:#285ce5;--atm-ink:#172d53;position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#f7faff 100%);padding:88px 0 78px;color:var(--atm-ink)}
+.atm-section *{box-sizing:border-box}
+.atm-glow{position:absolute;z-index:-1;pointer-events:none;left:50%;top:45%;width:min(850px,85vw);height:370px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,#dce8ffb5 0%,#dce8ff47 40%,transparent 72%);filter:blur(32px)}
+.atm-heading{max-width:790px;margin:0 auto 50px;padding:0 20px;text-align:center}
+.atm-eyebrow{display:inline-block;font-size:14px;color:var(--atm-blue);font-weight:700;margin-bottom:16px}
+.atm-heading h2{margin:0;color:var(--atm-ink);font-weight:800;font-size:clamp(32px,4vw,51px);letter-spacing:-.045em;line-height:1.13}
+.atm-heading h2 span{color:var(--atm-blue)}
+.atm-heading p{color:#687990;margin:18px auto 0;max-width:610px;font-size:16px;line-height:1.7}
+.atm-rows{display:flex;flex-direction:column;gap:20px}
+.atm-viewport{width:100%;overflow:hidden;padding:4px 0;mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%)}
+.atm-track{--atm-gap:20px;display:flex;gap:var(--atm-gap);width:max-content;animation:atm-scroll 50s linear infinite;will-change:transform}
+.atm-reverse .atm-track{animation-direction:reverse;animation-duration:58s}
+.atm-viewport:hover .atm-track,.atm-viewport:focus-within .atm-track{animation-play-state:paused}
+.atm-group{display:flex;flex:none;gap:var(--atm-gap)}
+.atm-card{display:flex;flex-direction:column;justify-content:space-between;gap:12px;width:370px;min-height:252px;margin:0;padding:25px;background:#ffffffed;border:1px solid #e3e8f3;border-radius:18px;box-shadow:0 6px 22px #15366b0c;transition:border-color .25s,box-shadow .25s}
+.atm-card:hover{border-color:#bbccf0;box-shadow:0 13px 30px #1b4caa16}
+.atm-rating{display:flex;gap:3px;color:#285ce5}
+.atm-card h3{font-size:15px;font-weight:750;line-height:1.4;color:#1b3158;margin:2px 0 0}
+.atm-card blockquote{margin:0;flex:1;font-size:14px;line-height:1.65;color:#42516a;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.atm-person{display:flex;align-items:center;gap:12px;margin-top:6px}
+.atm-avatar{position:relative;flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:linear-gradient(145deg,#e3edff,#a9c3ff);color:#214db7;font-size:12px;font-weight:800;overflow:hidden}
+.atm-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.atm-person-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:3px}
+.atm-person-copy strong{font-size:13px;color:#1a2d4d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.atm-person-copy small{font-size:12px;color:#8290a6}
+.atm-play{display:grid;place-items:center;width:37px;height:37px;flex:none;border-radius:50%;border:1px solid #bfd2ff;background:#eff5ff;color:#285ce5;cursor:pointer;transition:background .2s,transform .2s}
+.atm-play:hover{background:#dceaff;transform:scale(1.05)}
+.atm-play:focus-visible,.atm-more:focus-visible{outline:3px solid #83a5f9;outline-offset:3px}
+.atm-footer{display:flex;justify-content:center;margin-top:36px;padding:0 20px}
+.atm-more{display:inline-flex;align-items:center;gap:8px;border:1px solid #c8d7f6;background:white;border-radius:99px;padding:12px 22px;text-decoration:none;color:#285ce5;font-size:14px;font-weight:750;transition:background .2s}
+.atm-more:hover{background:#edf4ff}
+@keyframes atm-scroll{to{transform:translateX(calc(-50% - var(--atm-gap)/2))}}
+@media(max-width:760px){.atm-section{padding:64px 0 58px}.atm-heading{margin-bottom:32px}.atm-heading p{font-size:14px}.atm-rows{gap:13px}.atm-track{--atm-gap:14px;animation-duration:38s}.atm-reverse .atm-track{animation-duration:44s}.atm-card{width:min(320px,78vw);min-height:245px;padding:21px}.atm-viewport{mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}}
+@media(prefers-reduced-motion:reduce){.atm-viewport{mask-image:none;-webkit-mask-image:none;overflow-x:auto;scroll-snap-type:x proximity}.atm-track{animation:none!important}.atm-group:nth-child(2){display:none}.atm-card{scroll-snap-align:center}}

@@ -1,0 +1,35 @@
+/* Accutech feature grid — layout faithful to supplied Velora screenshot.
+   Entirely namespaced: no interference with character, header or testimonials. */
+.afg-section{position:relative;isolation:isolate;overflow:hidden;background:#fff;color:#111;padding:88px 24px 76px;border-block:1px solid #f1f1f1}
+.afg-section *{box-sizing:border-box}
+.afg-section::before{content:"";position:absolute;width:min(950px,90vw);height:410px;left:50%;top:54%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(65,115,245,.075),transparent 72%);pointer-events:none;z-index:-1}
+.afg-container{width:min(1100px,100%);margin-inline:auto}
+.afg-heading{max-width:690px;text-align:center;margin:0 auto 56px}
+.afg-eyebrow{display:block;padding:0;background:none;border:0;color:#2563eb;font-size:14px;font-weight:650;letter-spacing:0}
+.afg-section .afg-heading h2{font-size:clamp(31px,3.5vw,47px);line-height:1.13;letter-spacing:-.045em;font-weight:750;color:#0b0b0c;margin:13px auto 17px}
+.afg-section .afg-heading h2 span{color:inherit}
+.afg-heading>p{font-size:16px;line-height:1.55;color:#797979;margin:0 auto;max-width:620px}
+.afg-grid{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0;padding:0}
+.afg-item{min-width:0;display:flex}
+.afg-card{--afg-x:50%;--afg-y:50%;flex:1;position:relative;min-width:0;padding:6px;border-radius:18px;background:#fff;border:1px solid #e2e3e8;overflow:visible;transition:border-color .25s ease;isolation:isolate}
+/* Border highlight: the light follows cursor around outer card, not over the content. */
+.afg-card::before{content:"";position:absolute;inset:-2px;border-radius:20px;z-index:-1;pointer-events:none;opacity:0;background:radial-gradient(190px circle at var(--afg-x) var(--afg-y),rgba(38,100,255,.95) 0%,rgba(80,140,255,.5) 28%,transparent 70%);filter:blur(4px);transition:opacity .2s ease}
+.afg-card:hover::before,.afg-card:focus-within::before{opacity:1}
+.afg-card:hover,.afg-card:focus-within{border-color:#c6d7fc}
+.afg-inner{position:relative;width:100%;height:100%;min-height:207px;padding:22px 22px 20px;border-radius:13px;border:1px solid #e3e4e8;background:linear-gradient(125deg,#fff 62%,#f7f9ff);box-shadow:0 1px 2px #121a280d;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden}
+.afg-icon{width:41px;height:41px;display:grid;place-items:center;flex-shrink:0;margin-bottom:18px;border-radius:9px;border:1px solid #e2e6ee;color:#2463f6;background:#e9f1ff}
+.afg-icon svg{width:19px;height:19px;stroke-width:2}
+.afg-section .afg-card h3{font-size:16px;font-weight:700;color:#101114;letter-spacing:-.025em;line-height:1.35;margin:0 0 12px}
+.afg-section .afg-card p{font-size:13px;color:#747474;line-height:1.67;margin:0}
+.afg-bottom{display:flex;flex-direction:column;align-items:center;gap:21px;margin-top:42px}
+.afg-bottom>p{margin:0;color:#777;text-align:center;font-size:13px}
+.afg-bottom>p a{display:inline-flex;align-items:center;gap:4px;color:#215fea;text-decoration:none;font-weight:600}
+.afg-bottom>p a:hover{text-decoration:underline}
+.afg-more{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:43px;border:1px solid #cfdaef;border-radius:9px;padding:10px 19px;background:#fff;color:#245ae3;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px #172e5e0d;transition:background .2s,color .2s,border-color .2s}
+.afg-more:hover{background:#265ee8;color:#fff;border-color:#265ee8}
+.afg-more:focus-visible,.afg-bottom a:focus-visible{outline:3px solid #7da7ff;outline-offset:3px}
+.afg-arrow-up{transform:rotate(-90deg)}
+@media(min-width:769px) and (prefers-reduced-motion:no-preference){.afg-section:not(.afg-visible) .afg-item{opacity:0;transform:translateY(20px)}.afg-section.afg-visible .afg-item{animation:afg-reveal .55s ease backwards;animation-delay:calc(var(--afg-order)*55ms)}@keyframes afg-reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}}
+@media(max-width:900px){.afg-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.afg-section{padding:70px 20px}.afg-heading{margin-bottom:42px}}
+@media(max-width:600px){.afg-section{padding:54px 16px}.afg-grid{grid-template-columns:1fr;gap:12px}.afg-heading{margin-bottom:30px}.afg-section .afg-heading h2{font-size:32px}.afg-heading>p{font-size:14px}.afg-inner{min-height:0;padding:21px}.afg-bottom{margin-top:27px}}
+@media(prefers-reduced-motion:reduce){.afg-card,.afg-card::before,.afg-more{transition:none!important}.afg-item{animation:none!important}}

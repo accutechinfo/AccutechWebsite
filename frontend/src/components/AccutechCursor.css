@@ -1,0 +1,12 @@
+/* Scoped equivalent of the reference portfolio's glowing 50px cursor. */
+.acref-root .acref-custom-cursor{
+  position:fixed;top:0;left:0;width:48px;height:48px;border-radius:50%;
+  background:rgba(107,155,255,.23);border:1px solid rgba(86,128,238,.35);
+  box-shadow:0 0 22px rgba(79,132,243,.35), inset 0 0 9px rgba(255,255,255,.5);
+  pointer-events:none;z-index:9000;opacity:0;visibility:hidden;
+  transition:opacity .22s,background .25s,width .25s,height .25s;
+  will-change:transform;
+}
+.acref-root .acref-custom-cursor.acref-cursor-visible{opacity:1;visibility:visible}
+.acref-root .acref-custom-cursor.acref-cursor-hover{width:64px;height:64px;background:rgba(75,116,229,.17)}
+@media(pointer:coarse),(max-width:760px){.acref-root .acref-custom-cursor{display:none!important}}

@@ -25,3 +25,4 @@ backend/bootstrap/cache/*.php
 # OS
 .DS_Store
 Thumbs.db
+frontend/public/models/character.glb

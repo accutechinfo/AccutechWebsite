@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { DbFaIcon } from "../components/DbFaIcon";
 import {
   ArrowRight, ShieldCheck, FileText, Boxes, ChartNoAxesCombined,
@@ -7,7 +7,13 @@ import {
   ChevronRight, MapPin, MessageCircle, Quote, ExternalLink,
 } from "lucide-react";
 import "./Home.css";
+import AccutechCharacterHero from "../components/AccutechCharacterHero";
 import DemoEnquiryForm from "../components/DemoEnquiryForm";
+import TestimonialsMarquee from "../components/TestimonialsMarquee";
+import FeaturesGlowGrid from "../components/FeaturesGlowGrid";
+import FaqTwoColumn from "../components/FaqTwoColumn";
+import VortexContactCTA from "../components/VortexContactCTA";
+import AccuChatImageSlider from "../components/AccuChatImageSlider";
 
 import { fetchIndustryCategories, localAsset, publicPagePath } from "../services/publicPagesApi";
 import { API_ENDPOINTS, apiGet } from "../services/apiConfig";
@@ -19,18 +25,15 @@ const categoryDefaults = {
   dmsxpert: "fa-solid fa-sitemap",
 };
 const asset = localAsset;
+// Vite serves this file directly from frontend/public/assets/images/accounts1.webp.
+const BLOG_FALLBACK_IMAGE = "/assets/images/accounts1.webp";
 const features = [
   { icon: FileText, title: "GST Billing", description: "Easy invoicing & tax compliance", color: "blue" },
   { icon: Boxes, title: "Inventory", description: "Track stock across locations", color: "green" },
   { icon: ChartNoAxesCombined, title: "Reports", description: "Real-time reports & analytics", color: "purple" },
   { icon: Users, title: "Multi-User", description: "Manage multiple users with roles", color: "yellow" },
 ];
-const dataCards = [
-  ["Scope of Application", "AccutechERP Web ERP Platform and SalesApp Mobile Application for admins, accounts, managers and field sales teams."],
-  ["User Accounts", "ERP and SalesApp users are created and managed only by the company administrator. No public signup is available."],
-  ["Data We Collect", "Depending on platform access, required business data is stored in the respective company database securely."],
-  ["Purpose of Data", "Data is used for ERP functionality, mobile sales operations, secure access, cloud syncing and platform performance."],
-];
+
 const testimonials = [
   { title: "A Complete ERP Solution For Business Growth", name: "Chatore Shyam Limited", text: "We started using Accutech ERP a few months ago and honestly it has made our work much easier. Earlier we were managing accounts and inventory separately, but now everything is in one place.", image: "assets/img/team/member/mbs_formulation.webp", youtubeId: "z5EJRCZluqo", letter: "C" },
   { title: "Powerful Accounting, Inventory And Sales Platform", name: "Mgee Healthcare", text: "I was looking for an ERP that could handle accounting, inventory, and sales together, and Accutech ERP turned out to be the perfect solution.", image: "assets/img/team/member/mbs_pharma.webp", youtubeId: "gF7_drspj3Q", letter: "M" },
@@ -183,26 +186,193 @@ function BlogsPreview() {
   const [posts, setPosts] = useState([]);
   useEffect(() => { const controller = new AbortController(); apiGet(`${API_ENDPOINTS.blogs}?page=1`, controller.signal).then(json => { const entries = Array.isArray(json) ? json : Array.isArray(json.data) ? json.data : Array.isArray(json.blogs?.data) ? json.blogs.data : []; setPosts(entries.slice(0, 6)); }).catch(() => {}); return () => controller.abort(); }, []);
   if (!posts.length) return null;
-  return <section className="hn-section hn-blogs"><div className="hn-container"><SectionHeading badge="Blogs">Read <strong>Our Latest</strong> News &amp; Blogs</SectionHeading><div className="hn-blog-grid">{posts.map(p => <article className="hn-blog-card" key={p.id || p.slug}><Link to={`/blog/${p.slug}`}><img loading="lazy" src={p.image_url || p.imageUrl || p.image || asset("uploads/blogs/accounts1.webp")} alt={p.title} onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = asset("uploads/blogs/accounts1.webp"); }}/></Link><div className="hn-blog-body">{p.tags && <span className="hn-blog-tags">{String(p.tags).split(",").slice(0,3).map(t => `#${t.trim()}`).join(" ")}</span>}<small>{p.published_at ? new Date(p.published_at).toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric", timeZone: "Asia/Kolkata" }) : ""}</small><h3><Link to={`/blog/${p.slug}`}>{p.title}</Link></h3><p>{(p.excerpt || "").replace(/<[^>]+>/g, "").slice(0,180)}…</p><Link to={`/blog/${p.slug}`}>Continue reading →</Link></div></article>)}</div><div className="hn-center"><Link className="hn-primary" to="/blogs">See All Blogs <ArrowRight size={17}/></Link></div></div></section>;
+  return <section className="hn-section hn-blogs"><div className="hn-container"><SectionHeading badge="Blogs">Read <strong>Our Latest</strong> News &amp; Blogs</SectionHeading><div className="hn-blog-grid">{posts.map(p => <article className="hn-blog-card" key={p.id || p.slug}><Link to={`/blog/${p.slug}`}><img loading="lazy" src={p.image_url || p.imageUrl || p.image || BLOG_FALLBACK_IMAGE} alt={p.title} onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = BLOG_FALLBACK_IMAGE; }}/></Link><div className="hn-blog-body">{p.tags && <span className="hn-blog-tags">{String(p.tags).split(",").slice(0,3).map(t => `#${t.trim()}`).join(" ")}</span>}<small>{p.published_at ? new Date(p.published_at).toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric", timeZone: "Asia/Kolkata" }) : ""}</small><h3><Link to={`/blog/${p.slug}`}>{p.title}</Link></h3><p>{(p.excerpt || "").replace(/<[^>]+>/g, "").slice(0,180)}…</p><Link to={`/blog/${p.slug}`}>Continue reading →</Link></div></article>)}</div><div className="hn-center"><Link className="hn-primary" to="/blogs">See All Blogs <ArrowRight size={17}/></Link></div></div></section>;
 }
 function VideosPreview({ onPlay }) {
-  return <div className="hn-video-resources"><div className="hn-resource-top"><h3><strong>Learn Better</strong> With Our Video Guides</h3><Link to="/videos" className="hn-primary hn-small">Learn More</Link></div><div className="hn-video-grid">{videos.map(([id, title]) => <button type="button" key={id} onClick={() => onPlay(id)} className="hn-thumb"><img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`} alt={title} loading="lazy"/><span><Play size={20} fill="currentColor"/></span></button>)}</div></div>;
+  const videoDetails = [
+    {
+      id: "ztKL8Uonctw",
+      title: "Getting Started with Accutech ERP",
+      category: "GETTING STARTED",
+      detail: "A quick introduction to navigating Accutech ERP and getting your daily work organised.",
+      layout: "featured",
+    },
+    {
+      id: "DfBe35hIb8w",
+      title: "Keep Orders in Sync",
+      category: "ORDER MANAGEMENT",
+      detail: "Learn how to manage orders and keep your sales workflow connected.",
+      layout: "wide",
+    },
+    {
+      id: "oSD5-dC5Ih4",
+      title: "Attendance & Visits",
+      category: "FIELD SALES",
+      detail: "Explore how attendance and visit records support your sales team.",
+      layout: "standard",
+    },
+    {
+      id: "gUaG2kIwgMM",
+      title: "Helpful ERP Quick Tips",
+      category: "QUICK GUIDE",
+      detail: "Useful shortcuts and simple tips for working more efficiently.",
+      layout: "standard",
+    },
+  ];
+
+  return (
+    <div className="hn-video-resources hn-video-gallery">
+      <div className="hn-resource-top hn-video-gallery-heading">
+        <div>
+          <span className="hn-video-eyebrow">WATCH & LEARN</span>
+          <h3><strong>Learn Better</strong> With Our Video Guides</h3>
+          <p>Explore Accutech ERP through easy, step-by-step video tutorials.</p>
+        </div>
+        <Link to="/videos" className="hn-primary hn-small">
+          Explore All Videos <ArrowRight size={17} aria-hidden="true" />
+        </Link>
+      </div>
+
+      <div className="hn-video-layout-grid" aria-label="Accutech ERP video guides">
+        {videoDetails.map(({ id, title, category, detail, layout }) => (
+          <button
+            type="button"
+            key={id}
+            className={`hn-video-layout-card hn-video-layout-card--${layout}`}
+            onClick={() => onPlay(id)}
+            aria-label={`Play video: ${title}`}
+          >
+            <img
+              className="hn-video-layout-image"
+              src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
+              alt=""
+              loading="lazy"
+              onError={(event) => {
+                // Keep the card usable even if YouTube blocks a thumbnail.
+                event.currentTarget.style.opacity = "0";
+              }}
+            />
+            <span className="hn-video-layout-shade" aria-hidden="true" />
+            <span className="hn-video-layout-category">{category}</span>
+            <span className="hn-video-layout-play" aria-hidden="true"><Play size={25} fill="currentColor" /></span>
+            <span className="hn-video-layout-copy">
+              <strong>{title}</strong>
+              <span>{detail}</span>
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 }
+
 export default function Home() {
-  const [openedFaq, setOpenedFaq] = useState(0);
-  const [slide, setSlide] = useState(0);
+  const location = useLocation();
+
+  // React Router does not automatically scroll after mounting a new route.
+  // The 3D homepage also initializes GSAP ScrollTrigger, so retry the scroll
+  // briefly as the canvas/layout settles. No modification to the 3D rig.
+  useEffect(() => {
+    if (location.hash !== "#EnquiryForm") return undefined;
+
+    let cancelled = false;
+    const timers = [];
+    const frames = [];
+    let userInterrupted = false;
+    const stopAutoScroll = () => { userInterrupted = true; };
+    window.addEventListener("wheel", stopAutoScroll, { passive: true });
+    window.addEventListener("touchstart", stopAutoScroll, { passive: true });
+
+    const positionDemo = (behavior = "auto") => {
+      if (cancelled || userInterrupted) return;
+      const target = document.getElementById("demo-info") || document.getElementById("EnquiryForm");
+      if (!target) return;
+      const nav = document.querySelector(".accu-navbar-container");
+      const navBottom = nav?.getBoundingClientRect().bottom ?? 0;
+      const clearance = Math.max(84, Math.min(155, navBottom + 16));
+      const top = Math.max(0, window.scrollY + target.getBoundingClientRect().top - clearance);
+      if (Math.abs(window.scrollY - top) > 4) {
+        window.scrollTo({ top, behavior });
+      }
+    };
+
+    // First run after route paint, then correct when async hero layout settles.
+    frames.push(requestAnimationFrame(() => {
+      frames.push(requestAnimationFrame(() => positionDemo("auto")));
+    }));
+    [100, 350, 750, 1300].forEach((delay) => {
+      timers.push(window.setTimeout(() => positionDemo("auto"), delay));
+    });
+
+    return () => {
+      cancelled = true;
+      frames.forEach(cancelAnimationFrame);
+      timers.forEach(clearTimeout);
+      window.removeEventListener("wheel", stopAutoScroll);
+      window.removeEventListener("touchstart", stopAutoScroll);
+    };
+  }, [location.pathname, location.hash, location.key]);
+  // Reveal only the demo text when it enters the viewport.
+  // The 3D hero and form behavior remain untouched.
+  useEffect(() => {
+    const section = document.getElementById("demo-info");
+    if (!section || typeof IntersectionObserver === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        section.classList.add("hn-demo-is-visible");
+        observer.disconnect();
+      }
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+
+    section.classList.add("hn-demo-motion-ready");
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+      section.classList.remove("hn-demo-motion-ready");
+    };
+  }, []);
+
   const [playing, setPlaying] = useState(null);
-  useEffect(() => { const t = window.setInterval(() => setSlide(s => (s + 1) % 2), 5000); return () => window.clearInterval(t); }, []);
   return <div className="hn-home">
-    <section className="hn-hero" id="home"><div className="hn-container hn-hero-grid"><div><span className="hn-badge"><ShieldCheck size={14}/> Cloud Based GST ERP Software</span><h1>Simplify Accounting,<br/>Inventory &amp; GST <span>All in One Place</span></h1><p>Accutech ERP empowers businesses with smart automation, real-time insights and complete control over their operations.</p><div className="hn-hero-features">{features.map(f => { const Icon = f.icon; return <div className="hn-hero-feature" key={f.title}><span className={`hn-feature-icon ${f.color}`}><Icon size={21}/></span><h3>{f.title}</h3><p>{f.description}</p></div>; })}</div><div className="hn-hero-actions"><a href="#EnquiryForm" className="hn-primary">Request Demo <ArrowRight size={18}/></a><button type="button" className="hn-outline" onClick={() => setPlaying("ztKL8Uonctw")}><Play size={18}/> Watch Video</button></div><p className="hn-secure"><ShieldCheck size={17}/> Secure • Reliable • Scalable</p></div><div className="hn-hero-visual"><div className="hn-hero-orb"/><span className="hn-float hn-float-gst">✓ GST Ready</span><img src={asset("assets/images/gif_image.gif")} alt="Accutech ERP Dashboard" className="hn-dashboard"/><span className="hn-float hn-float-report">↗ Live Reports</span></div></div></section>
-    <section className="hn-section hn-about" id="about"><div className="hn-container hn-about-grid"><div className="hn-about-copy"><span className="hn-badge">About us</span><h2>Who Are <strong>We</strong></h2><p>Accutech ERP – a powerful, all-in-one ERP solution designed to optimize your business operations seamlessly.</p><p>With features like Sale Order Management, Single Login Access, Action Permissions, Post-Dated Cheque Management, Target Incentive Tracking, Order Pendency &amp; Planning, Security Check Management, and easy User Navigation. Accutech ERP brings everything you need in a single platform.</p><p><strong>Simplify processes, boost productivity, and drive results with a solution built for today’s dynamic business landscape.</strong></p><div className="hn-about-collage"><img src={asset("assets/img/bg-img/acc_about_2.webp")} alt="Accutech ERP"/><img src={asset("assets/img/bg-img/acc_about_1.webp")} alt="Accutech ERP Users"/><img src={asset("assets/img/bg-img/acc_about_3.webp")} alt="Accutech ERP Demo"/></div></div><DemoEnquiryForm variant="home" /></div></section>
-    <section className="hn-section hn-data"><div className="hn-container"><SectionHeading badge="Your Data, Your Control" description="AccutechERP and SalesApp are built to protect your business data while helping your team work faster, smarter and more securely.">From Billing To Inventory: <strong>Complete, Cloud-Based ERP</strong> Built For Growing Teams.</SectionHeading><div className="hn-data-grid">{dataCards.map(([title, body],i) => <article key={title} className="hn-data-card"><span>{i+1}</span><h3>{title}</h3><p>{body}</p></article>)}</div><div className="hn-center"><Link to="/front/privacy_policy" className="hn-outline hn-outline-light">Learn More <ArrowRight size={17}/></Link></div></div></section>
-    <section className="hn-section hn-testimonials" id="testimonial"><div className="hn-container"><SectionHeading badge="Testimonials" description="See what our customers have to say about us">Testimonials</SectionHeading><div className="hn-testimonial-grid">{testimonials.map(t => <article className="hn-test-card" key={t.name}><Quote size={23} className="hn-quote"/><h3>{t.title}</h3>{t.youtubeId ? <button type="button" onClick={() => setPlaying(t.youtubeId)} className="hn-test-picture"><img src={`https://img.youtube.com/vi/${t.youtubeId}/hqdefault.jpg`} alt={t.name} loading="lazy"/><span><Play fill="currentColor"/></span></button> : <img className="hn-test-picture-static" src={asset(t.image)} loading="lazy" alt={t.name} />}<p>“{t.text.length > 165 ? t.text.slice(0,165) + "…" : t.text}”</p><div className="hn-test-person"><span>{t.letter}</span><div><h4>{t.name}</h4><small>✓ Verified Client</small></div></div><div className="hn-stars">★★★★★</div></article>)}</div><div className="hn-center"><Link to="/front/testimonials" className="hn-outline">View More Testimonials <ArrowRight size={16}/></Link></div></div></section>
+    <AccutechCharacterHero onWatchVideo={() => setPlaying("ztKL8Uonctw")} />
+    <section className="hn-demo-after3d" id="demo-info" aria-labelledby="hn-demo-heading">
+      <div className="hn-container hn-demo-after3d-layout">
+        <div className="hn-demo-after3d-intro">
+          <span className="hn-demo-eyebrow"><span className="hn-demo-eyebrow-dot" /> SEE IT IN ACTION</span>
+          <h2 id="hn-demo-heading">Your business runs better with <strong>Accutech ERP.</strong></h2>
+          <p>See how one connected platform brings accounting, inventory, GST billing, and daily operations together. Get a personalised walkthrough tailored to your business.</p>
+          <div className="hn-demo-benefits">
+            <div><CheckCircle2 size={20} /><span>Explore the features that matter to your team</span></div>
+            <div><CheckCircle2 size={20} /><span>See a practical demo of your daily workflows</span></div>
+            <div><CheckCircle2 size={20} /><span>Ask questions directly to our ERP team</span></div>
+          </div>
+          <div className="hn-demo-trust">
+            <span><ShieldCheck size={17} /> Guided demonstration</span>
+            <span><Lock size={17} /> Your details stay private</span>
+          </div>
+        </div>
+        <div className="hn-demo-form-shell">
+          <div className="hn-demo-form-topline"><span /> BOOK YOUR DEMO <span /></div>
+          <DemoEnquiryForm variant="home" />
+        </div>
+      </div>
+    </section>
+    <FeaturesGlowGrid />
+    <TestimonialsMarquee testimonials={testimonials} onPlay={setPlaying} />
     <Industries />
-    <section className="hn-section hn-app-banner"><div className="hn-container"><div className="hn-banner-slide"><button type="button" aria-label="Previous banner" onClick={() => setSlide(s => (s+1)%2)}><ChevronLeft/></button>{slide === 0 ? <a href="https://play.google.com/store/apps/details?id=com.app.accuChat" target="_blank" rel="noopener noreferrer"><img src={asset("assets/img/accuchat/AccuChat_bnr.webp")} alt="AccuChat Business Communication App Banner"/></a> : <Link to="/front/accuchat"><img src={asset("assets/img/accuchat/AccuChat_bnr2.webp")} alt="AccuTask Business Communication App Banner"/></Link>}<button type="button" aria-label="Next banner" onClick={() => setSlide(s => (s+1)%2)}><ChevronRight/></button></div><div className="hn-banner-dots"><button type="button" className={slide === 0 ? "active" : ""} onClick={() => setSlide(0)} aria-label="Show banner 1"/><button type="button" className={slide === 1 ? "active" : ""} onClick={() => setSlide(1)} aria-label="Show banner 2"/></div></div></section>
+    <AccuChatImageSlider
+      slides={[
+        { src: asset("assets/img/accuchat/AccuChat_bnr.webp"), alt: "AccuChat business communication app banner", href: "https://play.google.com/store/apps/details?id=com.app.accuChat", external: true },
+        { src: asset("assets/img/accuchat/AccuChat_bnr2.webp"), alt: "AccuTask business communication app banner", href: "/front/accuchat", external: false }
+      ]}
+    />
     <BlogsPreview />
-    <section className="hn-ask"><div className="hn-container"><h2>Have a question? <strong>Ask us</strong> anything!</h2><p>Contact us and we'll get back to you as soon as possible.</p><Link className="hn-primary hn-primary-light" to="/contactus">Submit A Request</Link></div></section>
-    <section className="hn-section hn-faq" id="faqs"><div className="hn-container"><SectionHeading badge="FAQ">How can we <strong>help you?</strong></SectionHeading><div className="hn-faq-list">{faqs.map(([q,a],i) => <div className="hn-faq-item" key={q}><button type="button" aria-expanded={openedFaq === i} onClick={() => setOpenedFaq(openedFaq === i ? -1 : i)}>{q}<ChevronDown size={18} className={openedFaq === i ? "rotate" : ""}/></button>{openedFaq === i && <p>{a}</p>}</div>)}</div><VideosPreview onPlay={setPlaying}/></div></section>
+
+    <FaqTwoColumn faqs={faqs} />
+    <VortexContactCTA />
+    <section className="hn-section hn-faq-videos"><div className="hn-container"><VideosPreview onPlay={setPlaying}/></div></section>
     <section className="hn-section hn-location"><div className="hn-container"><h2>Find Us On <strong>the Map</strong></h2><div className="hn-location-frame"><iframe title="Accutech ERP office location in Panchkula" src="https://www.google.com/maps?q=SCO%2037%20Sector%2012%20Panchkula%20Haryana&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen/><div className="hn-location-caption"><MapPin size={19}/><div><strong>MBS Formulation / BDR INGESTA</strong><p>SCO 37, First Floor, Sector 12, Panchkula, Haryana - 134112</p></div></div></div></div></section>
     <section className="hn-final-cta"><div className="hn-container"><a href="#EnquiryForm">Want to See Accutech ERP in Action? <strong>Book a Free Demo <ArrowRight size={19}/></strong></a></div></section>
     <VideoPopup video={playing} onClose={() => setPlaying(null)}/>

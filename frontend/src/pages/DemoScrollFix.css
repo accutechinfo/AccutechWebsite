@@ -1,0 +1,5 @@
+/* Optional: account for a sticky navbar when navigating with a hash. */
+.hn-home #demo-info, .hn-home #EnquiryForm { scroll-margin-top: 116px; }
+@media(max-width: 991px) {
+  .hn-home #demo-info, .hn-home #EnquiryForm { scroll-margin-top: 90px; }
+}
