@@ -68,13 +68,18 @@ return [
             'visibility' => 'public',
         ],
 
+
         'legacy_blog_images' => [
             'driver' => 'local',
-            'root' => public_path('blogs'),
-            'url' => rtrim(env('APP_URL', 'http://127.0.0.1:8000'), '/') . '/blogs',
+            'root' => public_path('uploads/blogs'),
+            'url' => rtrim(
+                env('APP_URL', 'http://localhost'),
+                '/'
+            ) . '/uploads/blogs',
             'visibility' => 'public',
             'throw' => false,
         ],
+
 
         'legacy_page_banners' => [
             'driver' => 'local',

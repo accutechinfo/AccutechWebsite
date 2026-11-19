@@ -1,4 +1,8 @@
 
+/* =========================================
+   BLOGS PAGE
+========================================= */
+
 .accu-blogs-page {
   background: #fff;
   min-height: 100vh;
@@ -9,6 +13,10 @@
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
 }
+
+/* =========================================
+   HERO SECTION
+========================================= */
 
 .accu-blogs-hero {
   padding: 72px 0 76px;
@@ -59,6 +67,10 @@
   text-decoration: none;
 }
 
+/* =========================================
+   BLOG GRID
+========================================= */
+
 .accu-blogs-section {
   padding: 75px 0 95px;
 }
@@ -69,20 +81,27 @@
   gap: 30px;
 }
 
+/* =========================================
+   BLOG CARD
+========================================= */
+
 .accu-blog-card {
   min-width: 0;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
   border: 1px solid #e9edf5;
-  box-shadow: 0 6px 25px rgba(24, 44, 80, .055);
-  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 6px 25px rgba(24, 44, 80, 0.055);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
 .accu-blog-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(24, 44, 80, .12);
+  box-shadow: 0 18px 40px rgba(24, 44, 80, 0.12);
 }
+
+/* BLOG IMAGE */
 
 .accu-blog-card-image {
   height: 225px;
@@ -96,7 +115,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  transition: transform .35s ease;
+  transition: transform 0.35s ease;
 }
 
 .accu-blog-card:hover img {
@@ -115,12 +134,18 @@
   background: #eef3ff;
 }
 
+/* =========================================
+   BLOG CONTENT
+========================================= */
+
 .accu-blog-card-body {
   display: flex;
   flex-direction: column;
   padding: 25px 24px 27px;
   min-height: 315px;
 }
+
+/* TAGS */
 
 .accu-blog-tags {
   display: flex;
@@ -139,6 +164,8 @@
   overflow-wrap: anywhere;
 }
 
+/* DATE */
+
 .accu-blog-date {
   display: flex;
   align-items: center;
@@ -147,6 +174,8 @@
   color: #8090a9;
   margin-bottom: 12px;
 }
+
+/* TITLE */
 
 .accu-blog-card h2 {
   font-size: 20px;
@@ -164,6 +193,8 @@
   color: #2451df;
 }
 
+/* EXCERPT */
+
 .accu-blog-excerpt {
   color: #67748b;
   font-size: 14px;
@@ -174,6 +205,8 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* READ MORE */
 
 .accu-blog-readmore {
   display: inline-flex;
@@ -190,6 +223,10 @@
   gap: 14px;
 }
 
+/* =========================================
+   LOADING / ERROR MESSAGES
+========================================= */
+
 .accu-blog-message {
   padding: 55px 20px;
   text-align: center;
@@ -201,13 +238,20 @@
   color: #c02b2b;
 }
 
+/* =========================================
+   COMPACT PAGINATION
+========================================= */
+
 .accu-pagination {
   display: flex;
   justify-content: center;
-  gap: 9px;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 8px;
   margin-top: 48px;
 }
+
+/* NUMBER BUTTONS */
 
 .accu-pagination button {
   min-width: 43px;
@@ -219,10 +263,16 @@
   color: #233455;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 600;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  transition: background 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease;
 }
+
+/* ACTIVE AND HOVER */
 
 .accu-pagination button.active,
 .accu-pagination button:hover:not(:disabled) {
@@ -231,19 +281,65 @@
   border-color: #2451df;
 }
 
+/* PREVIOUS / NEXT */
+
+.accu-pagination .accu-page-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 14px;
+  min-width: auto;
+  font-weight: 600;
+}
+
+/* ELLIPSIS */
+
+.accu-pagination-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 43px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #77849c;
+  user-select: none;
+}
+
+/* DISABLED BUTTONS */
+
 .accu-pagination button:disabled {
-  opacity: .4;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
+/* KEYBOARD ACCESSIBILITY */
+
+.accu-pagination button:focus-visible {
+  outline: 2px solid #2451df;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
 @media (max-width: 991px) {
+
   .accu-blogs-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px;
   }
+
 }
 
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 640px) {
+
   .accu-blog-container {
     width: calc(100% - 30px);
   }
@@ -268,4 +364,31 @@
   .accu-blog-card-body {
     min-height: 0;
   }
+
+  /* MOBILE PAGINATION */
+
+  .accu-pagination {
+    gap: 5px;
+    margin-top: 30px;
+  }
+
+  .accu-pagination button {
+    min-width: 35px;
+    height: 36px;
+    padding: 0 9px;
+    font-size: 12px;
+    border-radius: 7px;
+  }
+
+  .accu-pagination .accu-page-nav {
+    padding: 0 9px;
+    font-size: 12px;
+  }
+
+  .accu-pagination-dots {
+    min-width: 16px;
+    height: 36px;
+    font-size: 13px;
+  }
+
 }

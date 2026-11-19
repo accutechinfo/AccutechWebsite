@@ -89,10 +89,10 @@ class BlogForm
                         if (preg_match('#^https?://#i', $image)) {
                             $url = $image;
                         } else {
-                            $url = asset(
-                                'blogs/' . basename(
-                                    str_replace('\\', '/', $image)
-                                )
+                            $url = \Illuminate\Support\Facades\Storage::disk(
+                                'legacy_blog_images'
+                            )->url(
+                                basename(str_replace('\\', '/', $image))
                             );
                         }
 

@@ -39,7 +39,7 @@ class BlogsTable
                         $image = ltrim($image, '/');
 
                         if (!str_starts_with($image, 'blogs/')) {
-                            $image = 'blogs/' . basename($image);
+                            $image = 'uploads/blogs/' . basename($image);
                         }
 
                         return asset($image);
