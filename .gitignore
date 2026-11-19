@@ -1,9 +1,16 @@
+
 # Node.js
 node_modules/
-dist/
 build/
 coverage/
 *.log
+
+# React production build
+# Keep frontend/dist tracked in Git
+
+# Ignore unused GLB files
+frontend/public/models/*.glb
+frontend/dist/models/*.glb
 
 # Environment files
 .env
@@ -25,4 +32,3 @@ backend/bootstrap/cache/*.php
 # OS
 .DS_Store
 Thumbs.db
-frontend/public/models/character.glb

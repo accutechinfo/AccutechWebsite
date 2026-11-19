@@ -1,3 +1,4 @@
+
 # Logs
 logs
 *.log
@@ -7,14 +8,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist-ssr
+# Dependencies
+node_modules/
+dist-ssr/
+
+# Keep production build
+# dist/ is intentionally NOT ignored
+
+# Ignore unused GLB models
+public/models/*.glb
+dist/models/*.glb
+
+# Local environment files
+.env
+.env.*
+!.env.example
 *.local
 
-# Editor directories and files
+# Editor
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
